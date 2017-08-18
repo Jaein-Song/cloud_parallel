@@ -13,7 +13,7 @@ chmod +x *sh */*.sh
 # compile pararell bins
 ppn=0                       #Process Parallel computing Number
 pmn=1                       #Process Month Number
-while [ $ppn -lt 12 ]; do
+while [ $ppn -lt $num_cpu ]; do
     export ppn=$ppn
     pmn=`printf %02g $pmn`
     ppn=`printf %02g $ppn`
@@ -23,6 +23,7 @@ rm -rf $current_dir/totalQC/crun$pid
     export pmn=$pmn
     $current_dir/flmodules.sh
     #ceil
+    export ceilfl=(`ls -d $ceil_dir/2*/*`)
     insource="$current_dir/ceil/varmod.f90 $current_dir/ceil/ceil.f90 $current_dir/ceil/Sorting.f90 $current_dir/ceil/ncwrite.f90 $current_dir/ceil/subs.f90"
     outbinary='-o '$current_dir'/ceil/ceilrun'$ppn
     $FC $options1 $insource $FC_NC_lib $outbinary
