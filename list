@@ -1,0 +1,41 @@
+#!/bin/bash
+## CONFIGURATION AND INITIATION FILE
+## MADE BY J.I.Song, NIMS, 2017
+## THIS FILE MUST BE MODIFIED BEFORE USE THE ENTIRE PROGRAM IN ANY OTHER ENVIRONMENT.
+
+## SET BASIC PATHS
+export current_dir=/home/frldata/Cloud_Proc/parallel    			# Fix the current directory
+export CLD_dir=/data1/CLD_258/hmbprodat            	    			# Path of input binary files
+export CF_dir=/data2/CLD_PP/CLD_258/hmbprodat/CFRADIAL  			# Path of output CFradial files
+export ceil_dir=/data2/CLD_PP/CL51_258                  			# Path of Ceilometer files
+export ceil_cdf_dir=/data2/CLD_PP/CL51_258/netCDF       			# Path of output netCDF Ceilometer files
+export y_u_date=`date -u -d yesterday +%Y%m%d`          			# Get the UTC date of yesterday
+export t_u_date=`date -u -d now +%Y%m%d`                			# Get the UTC date of today
+export NETCDF='/usr/local/netcdf4.4'			        		# Path of netCDF4 : its library path must have both "libnetcdf and libnetcdff" 
+export Fig_dir=/data2/CLD_258/hmbprodat/CFRADIAL/Figs  				# Path of output Figure png files
+export web_dir=$Fig_dir/CLD1                            			# Path of webpage image directory
+
+##COMPILE AND EXECUTE SETTING
+export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH	     			# Modify LD_LIBRARY_PATH to use netcdf library in gfortran
+export extend=png					        		# extension of figure
+export FC=gfortran44					        		# Set Fortran Compiler (Need Fortran 2003)
+export options1='-fbounds-check -ffree-line-length-512'				# Set Fortran Compiler options (selectable)
+export options='-ffree-line-length-512'						# Set Fortran Compiler options (selectable)
+export FC_NC_lib='-I'$NETCDF'/include -L'$NETCDF'/lib -lnetcdf -lnetcdff'	# NetCDF library PATH for compiler option
+export num_cpu=12								# Number of CPUs to use 
+
+##SWITCH
+#Flag for diunal QC file1 for produce, 0 for not produce
+export flag_noqco=1								# no QCed and Unfiltered (D)
+export flag_noqcf=1								# no QCed and Filtered	(C)
+export flag_qc14o=1								# QC14 algorithm
+export flag_qc15o=1								# QC15 algorithm
+export flag_qc17o=1								# QC17 algorithm without ceilometer 
+export flag_qc172o=1								# QC17 algorithm with ceilometer
+export flag_overwrite=0								# Overwrite flag overwrite if this flag is 1
+
+##Find the oldest file date
+filelist=(`ls -d $CLD_dir/BASEDATD/20****/`)					
+oldestfile=${filelist[0]##/*/}
+export sy=${oldestfile:0:4} 
+export sm=${oldestfile:4:2}

@@ -1,0 +1,78 @@
+Made by Jae In Song, NIMS, 2017
+Contact: jaeinsong@korea.kr/jaein_song@yonsei.ac.kr/sjaein9289@gmail.com
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!THIS PROGRAM TAKES VERY LONG TIME!!!!!!!!!!!!!!!!
+!!!!!!!!!!!USE BACKGROUND OPTION FOR EXECUTION!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This package doesn't contain library or compiled binary.
+But this package contains compiling and linking commands in shell script.
+Thus, this package could be modified and added freely.
+
+If someone would like to deliver this package to whom is not affilated NIMS or not allowed by the creater, the source code must be compiled.
+
+
+The purpose of this software:
+    1. Make CDF files of ceilometer and cloud radar observation.
+    2. Apply quality control process to cloud radar observation.
+    3. Integrate daily cloud radar observation files.
+    4. Draw images of cloud radar observation
+
+Requirement for this program:
+    1. netCDF4 fortran library: libnetcdf, libnetcdff
+    2. GNU fortran90 compiler (gfortran; this compiler is basically installed in almost of the linux system)
+    3. NCAR Command Language (NCL): version of NCL should be higher than 6.2.1 (it may work at lower version with some warnings)
+    
+How to use this program:
+    1. Check the list file to modify the path
+    2. execute run.sh file by the command: sh run.sh
+        Actually, since this code takes such a longtime, background option will be effective
+        (i.e. nohup sh run.sh > log &)
+
+What is included?
+    1. ./README:                    This file
+    2. ./list:                      Shell script to set basic configurations
+    3. ./refinefiledir.sh:          Relocate file path of cloud radar observation files
+    4. ./run.sh:                    Executing shell script of all
+    5. ./draw.ncl:                  Draw contour plot of data
+    6. ./ceil/:                     Convert ceilometer observation file from ASCII to netCDF
+        1. ceil.f90:                Main code 
+        2. Sorting.f90:             Sorting module- this module can be conducted to any other fortran 90 code
+        3. ncwrite.f90:             Subroutine for netCDF writing
+        4. varmod.f90:              Decalaration of variables
+        5. run.sh:                  Executing shell script (make I/O file list, compile, and execute binary file) 
+    7. ./covupCFrad/:               Make netCDF files of original data, and QCed data of cloud radar observation.
+        1. covup_data.f90:          Main code
+        2. importpdf.f90:           Import PDF(Probability Density Function) look up table for QC15
+        3. qc14.f90:                Subroutine of QC14 algorithm made by Ye, KNU
+        4. qc15.f90:                Subroutine of QC15 algorithm made by Ye, KNU
+        5. sub_head.f:              Subroutine reading header of binary cloud radar file 
+        6. sub_block.f:             Subroutine reading block of binary cloud radar file 
+        7. write_cfradial.f:        Subroutine writing observation data in netCDF file
+        8. varmod.f90:              Declaring variables used in f90 files
+        9. mod_para.f:              Declaring variables used in f77 files
+        10. run.sh:                 Executing shell script
+        11. flist.sh:               Shell script to get file list
+    8. ./totalQC/:                  Integrate all netCDF files day by day
+        1. covup_dailyCFradial.f90: Integrate cfradial files day by day, 
+        2. ncread.f90:              Read netCDF files
+        3. ncwrite.f90:             Write net CDF files
+        4. noqcavg.f90:             Averaging method with out any QC, applied appropriate log and linear scale for each variables
+        5. knuavg.f90:              KNU-style averaging (log scale for reflectivity and linear scale for other variables)
+        6. qc17avg.f90:             Averaging method with physical constraint
+        7. qc17_ceil.f90:           Averaging method with physical constraint and ceilometer data
+        8. Sorting.f90:             Sorting module
+        9. subs.f90:                Subroutine for ceilometer data reading and averaging
+        10. varmod.f90:             Variation declaring module
+        11. covupDCR.sh:            Executing shell script
+    
+    Where is output files?
+        1. $CF_dir: cloud radar cdf files  
+            - $CF_dir/BASEDATC: filtered, unQCed cfradial files
+            - $CF_dir/BASEDATD: filtered, unQCed cfradial files
+            - $CF_dir/QC14:     QC14 applied files
+            - $CF_dir/QC15:     QC15 applied files
+            - $CF_dir/DAILYMEAN:Integrated cloud radar observation file
+        2. $ceil_cdf_dir
+            - cdf files of ceilometer observation
