@@ -20,9 +20,9 @@ export ncl=$NCARG_ROOT/bin/ncl
 
 ##SET file date option
 # use wildcard(*) if you want to excute for all date
-export ex_yr=2*
-export ex_mn=*
-export ex_da=*
+export ex_yr='2*'
+export ex_mn='*'
+export ex_da='*'
 
 ##COMPILE AND EXECUTE SETTING
 export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH	     			# Modify LD_LIBRARY_PATH to use netcdf library in gfortran

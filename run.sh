@@ -1,8 +1,8 @@
 #!/bin/bash
-#Cloud radar data process, Parallel computing for 12 cpus
-## CONFIGURATION AND INITIATION FILE
+#Cloud radar data process, Parallel computing for multiple cpus
+## CONFIGURATION AND EXECUTION FILE
 ## MADE BY J.I.Song, NIMS, 2017
-## THIS FILE MUST BE MODIFIED BEFORE USE THE ENTIRE PROGRAM IN ANY OTHER ENVIRONMENT.
+## TO USE IN OTHER ENVIRONMENT, list file should be modifed first
 ## compile first
 #Set file path or switch in this file
 rm -rf *.mod
@@ -12,16 +12,13 @@ cd $current_dir
 chmod +x *sh */*.sh
 # compile pararell bins
 ppn=0                       #Process Parallel computing Number
-pmn=1                       #Process Month Number
 
 while [ $ppn -lt $num_cpu ]; do
     export ppn=$ppn
-    pmn=`printf %02g $pmn`
     ppn=`printf %02g $ppn`
     rm -rf $current_dir/covupCFrad/frun$ppn
     rm -rf $current_dir/ceil/ceilrun$pid
     rm -rf $current_dir/totalQC/crun$pid
-    export pmn=$pmn
     $current_dir/flmodules.sh
     #ceil
     if [ $flag_ceil -gt 0 ]; then
@@ -43,22 +40,29 @@ while [ $ppn -lt $num_cpu ]; do
 	$FC $options $insource $FC_NC_lib $outbinary
     fi
     chmod +x $current_dir/*/*run$ppn
-    pmn=${pmn#0}
     ppn=${ppn#0}
-    let pmn++
     let ppn++
 done
-ppn=0                       #Process Parallel computing Number
-pmn=1                       #Process Month Number
+
+#File directory refine, would be done in sequential process
+if [ $flag_refn -gt 0 ]; then
+	$current_dir/refinefiledir.sh
+fi
+
+if [ $flag_ceil -gt 0]; then
+	export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+	ppn=0                       #Process Parallel computing Number
+	while [ $ppn -lt $num_cpu ]; do
+		dl[]
+		let ppn++
+	done
+	
+fi
 while [ $ppn -lt $num_cpu ]; do
     export ppn=$ppn
     ppn=`printf %02g $ppn`
-    pmn=`printf %02g $pmn`
-    export pmn=$pmn
     $current_dir/execute.sh >$current_dir/logs/'cpu'$ppn'_log' &
-    pmn=${pmn#0}
     ppn=${ppn#0}
-    let pmn++
     let ppn++
 done
 #$current_dir/plot.sh
