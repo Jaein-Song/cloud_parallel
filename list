@@ -14,6 +14,15 @@ export t_u_date=`date -u -d now +%Y%m%d`                			# Get the UTC date of
 export NETCDF='/usr/local/netcdf4.4'			        		# Path of netCDF4 : its library path must have both "libnetcdf and libnetcdff" 
 export Fig_dir=/data2/CLD_258/hmbprodat/CFRADIAL/Figs  				# Path of output Figure png files
 export web_dir=$Fig_dir/CLD1                            			# Path of webpage image directory
+export NCARG_ROOT=/home/frldata/util/ncl
+export PATH=$PATH:$NCARG_ROOT
+export ncl=$NCARG_ROOT/bin/ncl
+
+##SET file date option
+# use wildcard(*) if you want to excute for all date
+export ex_yr=2*
+export ex_mn=*
+export ex_da=*
 
 ##COMPILE AND EXECUTE SETTING
 export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH	     			# Modify LD_LIBRARY_PATH to use netcdf library in gfortran
@@ -24,7 +33,15 @@ export options='-ffree-line-length-512'						# Set Fortran Compiler options (sel
 export FC_NC_lib='-I'$NETCDF'/include -L'$NETCDF'/lib -lnetcdf -lnetcdff'	# NetCDF library PATH for compiler option
 export num_cpu=12								# Number of CPUs to use 
 
-##SWITCH
+##SWITCH 
+#Flag for turn on/off each progress. set if you want to do: 1, not:0
+export flag_refn=1								# Refine file directories
+export flag_ceil=1								# Convert ceilometer data files from ASCII to netCDF
+export flag_b2n=1								# Convert cloud radar data files from Binary to netCDF
+export flag_day=1								# Merge daily cloud radar data 
+export flag_plot=1								# Plot daily cloud radar data
+export flag_web=1								# Copy or modify path for web display
+
 #Flag for diunal QC file1 for produce, 0 for not produce
 export flag_noqco=1								# no QCed and Unfiltered (D)
 export flag_noqcf=1								# no QCed and Filtered	(C)

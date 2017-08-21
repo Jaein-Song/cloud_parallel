@@ -1,11 +1,4 @@
 #!/bin/bash
-       	export NCARG_ROOT=/home/frldata/util/ncl
-       	export PATH=$PATH:$NCARG_ROOT
-	export ncl=$NCARG_ROOT/bin/ncl
-#echo $current_dir
-#echo $NCARG_ROOT
-#echo $PATH
-#ncl -V
 time=`date`
 echo start plotting at $time
 filelist=(`ls $CF_dir/DAILYMEAN/2*/*.cfradial`)
