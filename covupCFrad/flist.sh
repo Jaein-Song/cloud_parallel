@@ -1,12 +1,7 @@
 #!/bin/bash
 ibd=$CLD_dir
-#dl=(`ls -d $ibd/BASEDAT*/*/*`)
-dl=(`ls -d $ibd/BASEDAT*/2*$pmn/2*$pmn*`)
-#dl=(`ls -d $ibd/BASEDAT*/2*/20170326`)
 dln=${#dl[*]}
-#ln2=${#a1[*]}
-#echo $dln 
-i=0
+i=${ppn#0}
 while [ $i -lt $dln ]; do
 	echo processing file at ${dl[$i]}
 	fl=(`ls ${dl[$i]}/*THI_900*.OBS`)
@@ -96,6 +91,11 @@ echo "EOF" >> $current_dir/covupCFrad/ofl15$ppn
 		let j++
 		done
 	fi
-	let i++
+#	let i++
+	i=`expr $i + $cpu_num`
 done
-
+ppn=`printf $02g $ppn`
+mkdir -p $current_dir/doneflags
+cat <<end >$current_dir/doneflags/done_$ppn
+done job at cpu no.$ppn process covupCFrad
+end

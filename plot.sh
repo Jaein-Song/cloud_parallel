@@ -1,9 +1,8 @@
 #!/bin/bash
 time=`date`
 echo start plotting at $time
-filelist=(`ls $CF_dir/DAILYMEAN/2*/*.cfradial`)
 filenumber=${#filelist[*]}
-i=0
+i=${ppn#0}
 while [ $i -lt $filenumber ]; do
 	Fig_File=${filelist[$i]}
 	Fig_File_out=${Fig_File/$CF_dir\/DAILYMEAN/$Fig_dir}
@@ -19,5 +18,10 @@ while [ $i -lt $filenumber ]; do
 		export	figtitle=$figtitle
 		ncl $current_dir/CRcontourplot_2b2.ncl
 	fi
-	let i++
+	i=`expr $i + $cpu_num`
 done
+ppn=`printf $02g $ppn`
+mkdir -p $current_dir/doneflags
+cat <<end >$current_dir/doneflags/done_$ppn
+done job at cpu no.$ppn process covupCFrad
+end

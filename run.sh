@@ -49,21 +49,91 @@ if [ $flag_refn -gt 0 ]; then
 	$current_dir/refinefiledir.sh
 fi
 
-if [ $flag_ceil -gt 0]; then
-	export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+##START CEIL PROCESS
+export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+if [ $flag_ceil -gt 0 ]; then
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
-		dl[]
+    		export ppn=`printf %02g $ppn`
+		$current_dir/ceil/ceilrun.sh >$current_dir/logs/ceil_cpu_$ppn&
+		ppn=${ppn#0}
 		let ppn++
 	done
-	
 fi
-while [ $ppn -lt $num_cpu ]; do
-    export ppn=$ppn
-    ppn=`printf %02g $ppn`
-    $current_dir/execute.sh >$current_dir/logs/'cpu'$ppn'_log' &
-    ppn=${ppn#0}
-    let ppn++
+prev_job_flag=0
+while [ $prev_job_flag -lt 1 ]; do
+	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
+	if [ $doneflagsnum -eq $num_cpu ]; then
+		prev_job_flag=1
+		rm -rf $current_dir'/doneflags/done*'
+	fi
 done
+
+##START BINARY TO NETCDF PROCESS
+export dl=(`ls -d $CLD_dir/BASEDAT*/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+if [ $flag_b2n -gt 0 ]; then
+	ppn=0                       #Process Parallel computing Number
+	while [ $ppn -lt $num_cpu ]; do
+    		export ppn=`printf %02g $ppn`
+		$current_dir/covupCFrad/covrun.sh >$current_dir/logs/b2n_cpu_$ppn&
+		ppn=${ppn#0}
+		let ppn++
+	done
+fi
+prev_job_flag=0
+while [ $prev_job_flag -lt 1 ]; do
+	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
+	if [ $doneflagsnum -eq $num_cpu ]; then
+		prev_job_flag=1
+		rm -rf $current_dir'/doneflags/done*'
+	fi
+done
+
+##START MERGE FILES DAILY
+dlD=(`ls -d $CF_dir/BASEDATD/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+dlC=(`ls -d $CF_dir/BASEDATC/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+dl14=(`ls -d $CF_dir/QC14/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+dl15=(`ls -d $CF_dir/QC15/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+if [ $flag_day -gt 0 ]; then
+	ppn=0                       #Process Parallel computing Number
+	while [ $ppn -lt $num_cpu ]; do
+    		export ppn=`printf %02g $ppn`
+		$current_dir/totalQC/covupDCR.sh >$current_dir/logs/day_cpu_$ppn &
+		ppn=${ppn#0}
+		let ppn++
+	done
+fi
+prev_job_flag=0
+while [ $prev_job_flag -lt 1 ]; do
+	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
+	if [ $doneflagsnum -eq $num_cpu ]; then
+		prev_job_flag=1
+		rm -rf $current_dir'/doneflags/done*'
+	fi
+done
+
+##START BINARY TO NETCDF PROCESS
+export filelist=(`ls $CF_dir/DAILYMEAN/$ex_yr/*$ex_yr$ex_mn$ex_da*cfradial`)
+if [ $flag_b2n -gt 0 ]; then
+	ppn=0                       #Process Parallel computing Number
+	while [ $ppn -lt $num_cpu ]; do
+    		export ppn=`printf %02g $ppn`
+		$current_dir/covupCFrad/covrun.sh >$current_dir/logs/b2n_cpu_$ppn&
+		ppn=${ppn#0}
+		let ppn++
+	done
+fi
+prev_job_flag=0
+while [ $prev_job_flag -lt 1 ]; do
+	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
+	if [ $doneflagsnum -eq $num_cpu ]; then
+		prev_job_flag=1
+		rm -rf $current_dir'/doneflags/done*'
+	fi
+done
+
+$current_dir/webpagedisplay.sh
+
+
 #$current_dir/plot.sh
 echo END

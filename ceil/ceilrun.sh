@@ -1,25 +1,23 @@
 #/data2/ncio/CL51_258/2017/01/A7010100.DAT
-dl=(`ls -d $ceil_dir/2*$pmn/*`)
-dln=${#dl[*]}
-i=0
-#dd=`seq -w 31`
+#dl=(`ls -d $ceil_dir/2*$pmn/*`)
+dln=${#ceil_dl[*]}
+i=${ppn#0}
+
 while [ $i -lt $dln ]; do
- echo ${dl[$i]} >> dl
     j=1
     p=${ceil_dir##/*/}
-    y=${dl[$i]##/*$p/}
+    y=${ceil_dl[$i]##/*$p/}
     echo $y >>dl
     echo $p
     y=${y:0:4}
     y1=${y:3:1}
-    mm=${dl[$i]:${#dl[$i]}-2:2}
-#    echo $mm >>dl
+    mm=${ceil_dl[$i]:${#ceil_dl[$i]}-2:2}
     while [ $j -le 31 ]; do
     dd=`printf %02g $j`
-    fn=`ls ${dl[$i]}/A$y1$mm$dd'00.DAT' |wc -l`
+    fn=`ls ${ceil_dl[$i]}/A$y1$mm$dd'00.DAT' |wc -l`
         if [ $fn -eq 1 ]; then
-            ifname1=${dl[$i]}/A$y1$mm$dd'00.DAT'
-            ifname2=${dl[$i]}'/CEILOMETER_1_LEVEL_3_DEFAULT_'$dd'.his'
+            ifname1=${ceil_dl[$i]}/A$y1$mm$dd'00.DAT'
+            ifname2=${ceil_dl[$i]}'/CEILOMETER_1_LEVEL_3_DEFAULT_'$dd'.his'
             `mkdir -p $ceil_dir/netCDF/201$y1/`
             doy=`date -d $y$mm$dd +%j`
             ofname1=$ceil_cdf_dir/$y/'NCIO_CIL_noQC_RAW__daily_'$doy'_'$y$mm$dd.'cdf'
@@ -57,6 +55,12 @@ while [ $i -lt $dln ]; do
         fi
 	let j++
     done
-    let i++
+    #let i++
+    i=`expr $i + $num_cpu`
 done
+ppn=`printf $02g $ppn`
+mkdir -p $current_dir/doneflags 
+cat <<end >$current_dir/doneflags/done_$ppn
+done job at cpu no.$ppn process ceil
+end
 rm $current_dir/ceil/ifl$ppn

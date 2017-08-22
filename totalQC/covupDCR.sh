@@ -21,16 +21,6 @@ flag_qc172o=1
 #1. Initialize
 rm $current_dir/totalQC/ifl
 
-echo "start $ymd compile" 
-dlD=(`ls -d $CF_dir/BASEDATD/2*$pmn/2*$pmn*`) #total directory list: only nofilter files
-dlC=(`ls -d $CF_dir/BASEDATC/2*$pmn/2*$pmn*`) #total directory list: only nofilter files
-dl14=(`ls -d $CF_dir/QC14/2*$pmn/2*$pmn*`) #total directory list: only nofilter files
-dl15=(`ls -d $CF_dir/QC15/2*$pmn/2*$pmn*`) #total directory list: only nofilter files
-#dlD=(`ls -d $CF_dir/BASEDATD/2*/2*`) #total directory list: only nofilter files
-#dlC=(`ls -d $CF_dir/BASEDATC/2*/2*`) #total directory list: only nofilter files
-#dl14=(`ls -d $CF_dir/QC14/2*/2*`) #total directory list: only nofilter files
-#dl15=(`ls -d $CF_dir/QC15/2*/2*`) #total directory list: only nofilter files
-
 bdl=$CF_dir'/DAILYMEAN/' #output file bse directory
 #determine ymd
 dlDn=${#dlD[*]}
@@ -38,6 +28,7 @@ dlCn=${#dlD[*]}
 dl14n=${#dlD[*]}
 dl15n=${#dlD[*]}
 i=0
+i=${ppn#0}
 
 while [ $i -lt $dlDn ]; do
 #2. Get input files
@@ -254,6 +245,11 @@ while [ $i -lt $dlDn ]; do
         fi
     fi
     fi
-    let i++
+    i=`expr $i + $cpu_num`
 done
 echo "END"
+ppn=`printf $02g $ppn`
+mkdir -p $current_dir/doneflags
+cat <<end >$current_dir/doneflags/done_$ppn
+done job at cpu no.$ppn process covupCFrad
+end
