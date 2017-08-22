@@ -58,7 +58,7 @@ while [ $i -lt $dln ]; do
     #let i++
     i=`expr $i + $num_cpu`
 done
-ppn=`printf $02g $ppn`
+ppn=`printf %02g $ppn`
 mkdir -p $current_dir/doneflags 
 cat <<end >$current_dir/doneflags/done_$ppn
 done job at cpu no.$ppn process ceil

@@ -59,7 +59,6 @@ if [ $flag_ceil -gt 0 ]; then
 		ppn=${ppn#0}
 		let ppn++
 	done
-fi
 prev_job_flag=0
 while [ $prev_job_flag -lt 1 ]; do
 	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
@@ -68,6 +67,7 @@ while [ $prev_job_flag -lt 1 ]; do
 		rm -rf $current_dir'/doneflags/done*'
 	fi
 done
+fi
 
 ##START BINARY TO NETCDF PROCESS
 export dl=(`ls -d $CLD_dir/BASEDAT*/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
@@ -79,7 +79,6 @@ if [ $flag_b2n -gt 0 ]; then
 		ppn=${ppn#0}
 		let ppn++
 	done
-fi
 prev_job_flag=0
 while [ $prev_job_flag -lt 1 ]; do
 	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
@@ -88,6 +87,7 @@ while [ $prev_job_flag -lt 1 ]; do
 		rm -rf $current_dir'/doneflags/done*'
 	fi
 done
+fi
 
 ##START MERGE FILES DAILY
 dlD=(`ls -d $CF_dir/BASEDATD/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
@@ -102,7 +102,6 @@ if [ $flag_day -gt 0 ]; then
 		ppn=${ppn#0}
 		let ppn++
 	done
-fi
 prev_job_flag=0
 while [ $prev_job_flag -lt 1 ]; do
 	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
@@ -111,6 +110,7 @@ while [ $prev_job_flag -lt 1 ]; do
 		rm -rf $current_dir'/doneflags/done*'
 	fi
 done
+fi
 
 ##START BINARY TO NETCDF PROCESS
 export filelist=(`ls $CF_dir/DAILYMEAN/$ex_yr/*$ex_yr$ex_mn$ex_da*cfradial`)
@@ -122,7 +122,6 @@ if [ $flag_b2n -gt 0 ]; then
 		ppn=${ppn#0}
 		let ppn++
 	done
-fi
 prev_job_flag=0
 while [ $prev_job_flag -lt 1 ]; do
 	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
@@ -131,6 +130,7 @@ while [ $prev_job_flag -lt 1 ]; do
 		rm -rf $current_dir'/doneflags/done*'
 	fi
 done
+fi
 
 $current_dir/webpagedisplay.sh
 
