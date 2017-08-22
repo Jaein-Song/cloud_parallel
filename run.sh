@@ -50,7 +50,6 @@ if [ $flag_refn -gt 0 ]; then
 fi
 
 ##START CEIL PROCESS
-export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
 if [ $flag_ceil -gt 0 ]; then
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
@@ -70,7 +69,6 @@ done
 fi
 
 ##START BINARY TO NETCDF PROCESS
-export dl=(`ls -d $CLD_dir/BASEDAT*/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
 if [ $flag_b2n -gt 0 ]; then
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
@@ -90,10 +88,6 @@ done
 fi
 
 ##START MERGE FILES DAILY
-dlD=(`ls -d $CF_dir/BASEDATD/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
-dlC=(`ls -d $CF_dir/BASEDATC/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
-dl14=(`ls -d $CF_dir/QC14/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
-dl15=(`ls -d $CF_dir/QC15/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
 if [ $flag_day -gt 0 ]; then
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
@@ -113,7 +107,6 @@ done
 fi
 
 ##START BINARY TO NETCDF PROCESS
-export filelist=(`ls $CF_dir/DAILYMEAN/$ex_yr/*$ex_yr$ex_mn$ex_da*cfradial`)
 if [ $flag_b2n -gt 0 ]; then
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
@@ -131,9 +124,5 @@ while [ $prev_job_flag -lt 1 ]; do
 	fi
 done
 fi
-
 $current_dir/webpagedisplay.sh
-
-
-#$current_dir/plot.sh
 echo END
