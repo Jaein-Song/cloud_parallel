@@ -13,11 +13,33 @@ while [ $i -lt $dln ]; do
 #	odt=${dl[$i]/BASEDAT/CFRADIAL\/BASEDAT}
 	mkdir -p ${dl[$i]/$CLD_dir/$CF_dir}
 	if [ $flt = 'C' ]; then
-	odt=${dl[$i]/BASEDATC/QC14}
-	mkdir -p ${odt/$CLD_dir/$CF_dir}
-	odt=${dl[$i]/BASEDATC/QC15}
-	mkdir -p ${odt/$CLD_dir/$CF_dir}
+		ofc=${dl[$i]/$CLD_dir/$CF_dir}
+		ofnno=`ls $ofc/*.cfradial|wc -l`
+		odt=${dl[$i]/BASEDATC/QC14}
+		od14=${odt/$CLD_dir/$CF_dir}
+		ofn14=`ls $od14/*.cfradial|wc -l`
+		mkdir -p ${odt/$CLD_dir/$CF_dir}
+		odt=${dl[$i]/BASEDATC/QC15}
+		od15=${odt/$CLD_dir/$CF_dir}
+		ofn15=`ls $od15/*.cfradial|wc -l`
+		mkdir -p ${odt/$CLD_dir/$CF_dir}
+	else
+		ofd=${dl[$i]/$CLD_dir/$CF_dir}
+		ofnno=`ls $ofc/*.cfradial|wc -l`
+		ofn14=$fln
+		ofn15=$fln
 	fi
+	if [ $ofnno -eq $fln ]; then
+		flagno=1
+	fi
+	if [ $ofn14 -eq $fln ]; then
+		flag14=1
+	fi
+	if [ $ofnno -eq $fln ]; then
+		flag15=1
+	fi
+	flagt=`expr $flagno + $flag14 + $flag15 `
+	if [ $flagt -lt 3 ]; then
 	if [ $fln -gt 1 ]; then
 	j=0
 		while [ $j -lt $fln ]; do
@@ -83,6 +105,7 @@ echo "EOF" >> $current_dir/covupCFrad/ofl15$ppn
 		fi
 		let j++
 		done
+	fi
 	fi
 #	let i++
 	i=`expr $i + $num_cpu`
