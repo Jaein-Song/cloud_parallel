@@ -240,7 +240,7 @@ while [ $i -lt $dlDn ]; do
         fi
     fi
     fi
-    i=`expr $i + $cpu_num`
+    i=`expr $i + $num_cpu`
 done
 echo "END"
 ppn=`printf %02g $ppn`

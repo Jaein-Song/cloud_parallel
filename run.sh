@@ -12,7 +12,7 @@ cd $current_dir
 chmod +x *sh */*.sh
 # compile pararell bins
 ppn=0                       #Process Parallel computing Number
-
+rm -rf $current_dir/doneflags/done*
 while [ $ppn -lt $num_cpu ]; do
     export ppn=$ppn
     ppn=`printf %02g $ppn`
@@ -51,6 +51,8 @@ fi
 
 ##START CEIL PROCESS
 if [ $flag_ceil -gt 0 ]; then
+export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+echo ${ceil_dl[*]}>$current_dir/ceil_dl
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
@@ -70,6 +72,8 @@ fi
 
 ##START BINARY TO NETCDF PROCESS
 if [ $flag_b2n -gt 0 ]; then
+export dl=(`ls -d $CLD_dir/BASEDAT*/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+echo ${dl[*]}>$current_dir/dl
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
@@ -89,6 +93,14 @@ fi
 
 ##START MERGE FILES DAILY
 if [ $flag_day -gt 0 ]; then
+export dlD=(`ls -d $CF_dir/BASEDATD/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+echo ${dlD[*]}>$current_dir/dlD
+export dlC=(`ls -d $CF_dir/BASEDATC/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+echo $dlC[*]}>$current_dir/dlC
+export dl14=(`ls -d $CF_dir/QC14/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+echo ${dl14[*]}>$current_dir/dl14
+export dl15=(`ls -d $CF_dir/QC15/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
+echo ${dl15[*]}>$current_dir/dl15
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
@@ -106,12 +118,14 @@ while [ $prev_job_flag -lt 1 ]; do
 done
 fi
 
-##START BINARY TO NETCDF PROCESS
-if [ $flag_b2n -gt 0 ]; then
+##START plot daily files 
+if [ $flag_plot -gt 0 ]; then
+export filelist=(`ls $CF_dir/DAILYMEAN/$ex_yr/*$ex_yr$ex_mn$ex_da*cfradial`)
+echo $filelist>$current_dir/filelist
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
-		$current_dir/covupCFrad/covrun.sh >$current_dir/logs/b2n_cpu_$ppn&
+		$current_dir/plot.sh >$current_dir/logs/plot_cpu_$ppn&
 		ppn=${ppn#0}
 		let ppn++
 	done
@@ -124,5 +138,7 @@ while [ $prev_job_flag -lt 1 ]; do
 	fi
 done
 fi
+if [ $flag_web -gt 0 ]; then
 $current_dir/webpagedisplay.sh
+fi
 echo END

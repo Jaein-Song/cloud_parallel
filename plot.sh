@@ -19,7 +19,7 @@ while [ $i -lt $filenumber ]; do
 		export	figtitle=$figtitle
 		ncl $current_dir/CRcontourplot_2b2.ncl
 	fi
-	i=`expr $i + $cpu_num`
+	i=`expr $i + $num_cpu`
 done
 ppn=`printf %02g $ppn`
 mkdir -p $current_dir/doneflags

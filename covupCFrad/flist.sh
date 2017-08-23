@@ -93,7 +93,7 @@ echo "EOF" >> $current_dir/covupCFrad/ofl15$ppn
 		done
 	fi
 #	let i++
-	i=`expr $i + $cpu_num`
+	i=`expr $i + $num_cpu`
 done
 ppn=`printf %02g $ppn`
 mkdir -p $current_dir/doneflags
