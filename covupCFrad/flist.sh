@@ -1,5 +1,6 @@
 #!/bin/bash
 ibd=$CLD_dir
+dl=(`cat $current_dir/dl`)
 dln=${#dl[*]}
 i=${ppn#0}
 while [ $i -lt $dln ]; do

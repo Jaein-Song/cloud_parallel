@@ -9,19 +9,14 @@
 #6. Run
 #7. clean up
 
-#########SWITCH#####################
-#1 for produce, 0 for not produce
-flag_noqco=1
-flag_noqcf=1
-flag_qc14o=1
-flag_qc15o=1
-flag_qc17o=1
-flag_qc172o=1
-
 #1. Initialize
 rm $current_dir/totalQC/ifl
 
 bdl=$CF_dir'/DAILYMEAN/' #output file bse directory
+dlD=(`cat $current_dir/dlD`)
+dlC=(`cat $current_dir/dlC`)
+dl14=(`cat $current_dir/dl14`)
+dl15=(`cat $current_dir/dl15`)
 #determine ymd
 dlDn=${#dlD[*]}
 dlCn=${#dlD[*]}

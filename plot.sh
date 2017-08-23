@@ -1,6 +1,7 @@
 #!/bin/bash
 time=`date`
 echo start plotting at $time
+$filelist=(`cat $current_dir/filelist`)
 filenumber=${#filelist[*]}
 i=${ppn#0}
 while [ $i -lt $filenumber ]; do

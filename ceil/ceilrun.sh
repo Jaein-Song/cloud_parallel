@@ -1,5 +1,6 @@
 #/data2/ncio/CL51_258/2017/01/A7010100.DAT
 #dl=(`ls -d $ceil_dir/2*$pmn/*`)
+ceil_dl=(`cat $current_dir/ceil_dl`)
 dln=${#ceil_dl[*]}
 i=${ppn#0}
 
