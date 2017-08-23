@@ -57,13 +57,3 @@ oldestfile=${filelist[0]##/*/}
 export sy=${oldestfile:0:4} 
 export sm=${oldestfile:4:2}
 
-##set file/directory lists
-
-if [ $flag_ceil -gt 0 ]; then
-fi
-if [ $flag_b2n -gt 0 ]; then
-fi
-if [ $flag_day -gt 0 ]; then
-fi
-if [ $flag_day -gt 0 ]; then
-fi
