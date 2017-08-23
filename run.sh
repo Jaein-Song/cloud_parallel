@@ -12,7 +12,9 @@ cd $current_dir
 chmod +x *sh */*.sh
 # compile pararell bins
 ppn=0                       #Process Parallel computing Number
-rm -rf $current_dir/doneflags/done*
+rm -rf $current_dir/doneflags/*
+mkdir $current_dir/doneflags
+mkdir $current_dir/logs
 while [ $ppn -lt $num_cpu ]; do
     export ppn=$ppn
     ppn=`printf %02g $ppn`
@@ -51,21 +53,23 @@ fi
 
 ##START CEIL PROCESS
 if [ $flag_ceil -gt 0 ]; then
-export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
-echo ${ceil_dl[*]}>$current_dir/ceil_dl
+	export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+	echo ${ceil_dl[*]}>$current_dir/ceil_dl
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
+		echo '0' >$current_dir/doneflags/cpustat_$ppn
 		$current_dir/ceil/ceilrun.sh >$current_dir/logs/ceil_cpu_$ppn&
 		ppn=${ppn#0}
 		let ppn++
 	done
 prev_job_flag=0
-while [ $prev_job_flag -lt 1 ]; do
-	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
-	if [ $doneflagsnum -eq $num_cpu ]; then
-		prev_job_flag=1
-		rm -rf $current_dir'/doneflags/done*'
+ppn=0
+while [ $prev_job_flag -lt $num_cpu ]; do
+    	export ppn=`printf %02g $ppn`
+	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
+	if [ $cpustat -gt 0 ]; then
+		let prev_job_flag++
 	fi
 done
 fi
@@ -77,16 +81,18 @@ echo ${dl[*]}>$current_dir/dl
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
+		echo '0' >$current_dir/doneflags/cpustat_$ppn
 		$current_dir/covupCFrad/covrun.sh >$current_dir/logs/b2n_cpu_$ppn&
 		ppn=${ppn#0}
 		let ppn++
 	done
 prev_job_flag=0
-while [ $prev_job_flag -lt 1 ]; do
-	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
-	if [ $doneflagsnum -eq $num_cpu ]; then
-		prev_job_flag=1
-		rm -rf $current_dir'/doneflags/done*'
+ppn=0
+while [ $prev_job_flag -lt $num_cpu ]; do
+    	export ppn=`printf %02g $ppn`
+	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
+	if [ $cpustat -gt 0 ]; then
+		let prev_job_flag++
 	fi
 done
 fi
@@ -104,16 +110,18 @@ echo ${dl15[*]}>$current_dir/dl15
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
+		echo '0' >$current_dir/doneflags/cpustat_$ppn
 		$current_dir/totalQC/covupDCR.sh >$current_dir/logs/day_cpu_$ppn &
 		ppn=${ppn#0}
 		let ppn++
 	done
 prev_job_flag=0
-while [ $prev_job_flag -lt 1 ]; do
-	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
-	if [ $doneflagsnum -eq $num_cpu ]; then
-		prev_job_flag=1
-		rm -rf $current_dir'/doneflags/done*'
+ppn=0
+while [ $prev_job_flag -lt $num_cpu ]; do
+    	export ppn=`printf %02g $ppn`
+	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
+	if [ $cpustat -gt 0 ]; then
+		let prev_job_flag++
 	fi
 done
 fi
@@ -125,20 +133,22 @@ echo $filelist>$current_dir/filelist
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
+		echo '0' >$current_dir/doneflags/cpustat_$ppn
 		$current_dir/plot.sh >$current_dir/logs/plot_cpu_$ppn&
 		ppn=${ppn#0}
 		let ppn++
 	done
 prev_job_flag=0
-while [ $prev_job_flag -lt 1 ]; do
-	doneflagsnum=`ls $current_dir/doneflags/done_*|wc -l`
-	if [ $doneflagsnum -eq $num_cpu ]; then
-		prev_job_flag=1
-		rm -rf $current_dir'/doneflags/done*'
+ppn=0
+while [ $prev_job_flag -lt $num_cpu ]; do
+    	export ppn=`printf %02g $ppn`
+	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
+	if [ $cpustat -gt 0 ]; then
+		let prev_job_flag++
 	fi
 done
 fi
 if [ $flag_web -gt 0 ]; then
-$current_dir/webpagedisplay.sh
+	$current_dir/webpagedisplay.sh
 fi
 echo END

@@ -22,7 +22,4 @@ while [ $i -lt $filenumber ]; do
 	i=`expr $i + $num_cpu`
 done
 ppn=`printf %02g $ppn`
-mkdir -p $current_dir/doneflags
-cat <<end >$current_dir/doneflags/done_$ppn
-done job at cpu no.$ppn process covupCFrad
-end
+echo '1'>$current_dir/doneflags/cpustat_$ppn

@@ -244,7 +244,4 @@ while [ $i -lt $dlDn ]; do
 done
 echo "END"
 ppn=`printf %02g $ppn`
-mkdir -p $current_dir/doneflags
-cat <<end >$current_dir/doneflags/done_$ppn
-done job at cpu no.$ppn process covupCFrad
-end
+echo '0' >$current_dir/doneflags/cpustat_$ppn

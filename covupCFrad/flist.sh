@@ -26,10 +26,7 @@ while [ $i -lt $dln ]; do
 		fsize=${pl%%$CLD_dir*.OBS}
 		stype=${p##/*__}
 		stype=${stype:0:3}
-#		echo $fsize
-#		echo $fsize $pl
 		if [ $fsize -gt 6000 ] ; then
-#			q=${p/BASEDAT/CFRADIAL\/BASEDAT}
 			q=${p/OBS/cfradial}
 			q=${q/$CLD_dir/$CF_dir}
 			if [ $flt = 'C' ]; then
@@ -42,7 +39,6 @@ while [ $i -lt $dln ]; do
 					lgc14=`ls $q14 |wc -l`
 					lgc15=`ls $q15 |wc -l`
 				else # PPI and RHI scan are not subject to QC14 and QC15
-#					lgc=`ls $q |wc -l`
 					lgc=1
 					lgc14=1 
 					lgc15=1
@@ -61,15 +57,11 @@ while [ $i -lt $dln ]; do
 			fi
 
 			lgct=`expr $lgc + $lgc14 + $lgc15`
-#			echo $p
 			echo $q
-#			echo $q14
-#			echo $q15
 			echo $lgc $lgc14 $lgc15
 			if [ $lgct -lt 3 ]; then
 				rm ifl ofl14 ofl ofl15
 				echo $lgc $lgc14 $lgc15 >$current_dir/covupCFrad/ifl$ppn 
-#echo $currend_dir $current_dir/covupCFrad/ifl
 			 	echo $p >>$current_dir/covupCFrad/ifl$ppn
 				if [ $lgc -lt 1 ]; then
 					echo $q > $current_dir/covupCFrad/ofl$ppn
@@ -96,7 +88,4 @@ echo "EOF" >> $current_dir/covupCFrad/ofl15$ppn
 	i=`expr $i + $num_cpu`
 done
 ppn=`printf %02g $ppn`
-mkdir -p $current_dir/doneflags
-cat <<end >$current_dir/doneflags/done_$ppn
-done job at cpu no.$ppn process covupCFrad
-end
+echo '1' >$current_dir/doneflags/cpustat_$ppn

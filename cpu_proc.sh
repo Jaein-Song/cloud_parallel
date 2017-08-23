@@ -1,6 +1,7 @@
 #!/bin/bash
 pfid=`pgrep $task_name`
 echo $task_name $ppn
+pfid=0
 flag=0
 while [ $flag -lt 1 ]; do
 	pfid=`pgrep $task_name`
