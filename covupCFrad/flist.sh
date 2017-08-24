@@ -29,6 +29,9 @@ while [ $i -lt $dln ]; do
 		ofn14=$fln
 		ofn15=$fln
 	fi
+	flagno=0
+	flag14=0
+	flag15=0
 	if [ $ofnno -eq $fln ]; then
 		flagno=1
 	fi
@@ -82,7 +85,7 @@ while [ $i -lt $dln ]; do
 			echo $q
 			echo $lgc $lgc14 $lgc15
 			if [ $lgct -lt 3 ]; then
-				rm ifl ofl14 ofl ofl15
+				#rm ifl ofl14 ofl ofl15
 				echo $lgc $lgc14 $lgc15 >$current_dir/covupCFrad/ifl$ppn 
 			 	echo $p >>$current_dir/covupCFrad/ifl$ppn
 				if [ $lgc -lt 1 ]; then
