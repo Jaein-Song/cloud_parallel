@@ -13,6 +13,8 @@ chmod +x *sh */*.sh
 # compile pararell bins
 ppn=0                       #Process Parallel computing Number
 rm -rf $current_dir/doneflags/*
+rm -rf $current_dir/logs/*run*
+rm -rf $current_dir/logs/*cpu*
 mkdir $current_dir/doneflags
 mkdir $current_dir/logs
 while [ $ppn -lt $num_cpu ]; do
