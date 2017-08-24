@@ -68,7 +68,7 @@ SUBROUTINE qc17_ceil
                         ENDIF
                     else
 !1.2. Exception Z>0: V>-10
-                         IF (VelhI(ti,hi).gt.-10) then
+                         IF (VelhI(ti,hi).gt.-15) then
                             VelhF=1
                         else
                             VelhF=0
@@ -116,7 +116,7 @@ SUBROUTINE qc17_ceil
                         ENDIF
                     else
 !2.2. Exception Z>0: V>-10
-                         IF (VelvI(ti,hi).gt.-10) then
+                         IF (VelvI(ti,hi).gt.-15) then
                             VelvF=1
                         else
                             VelvF=0
@@ -226,3 +226,74 @@ SUBROUTINE qc17_ceil
     DEALLOCATE(RefhI,VelhI,SpWhI,SNRhI,LDRaI)
     DEALLOCATE(RefvI,VelvI,SpWvI,SNRvI)
 END SUBROUTINE qc17_ceil
+
+SUBROUTINE maskingQC
+    USE varmod
+    IMPLICIT NONE
+    integer hmask(3),vmask(3)
+       do ti=2,tlen-1
+        do hi=2, 999
+                do dhi=hi-1,hi+1
+                hmask(dhi-hi+2)=0
+                do dti=ti-1,ti+1
+                        if (RefhW(dhi,dti).gt.-90) then
+                                hmask(dhi-hi+2)=hmask(dhi-hi+2)+1
+                        endif
+                enddo
+                enddo
+                if ((hmask(1).eq.0).and.(hmask(2).eq.3).and.(hmask(3).eq.0)) then
+                do dhi=hi-1,hi+1
+                        RefhW(dhi,ti)=fv
+                        VelhW(dhi,ti)=fv
+                        SpWhW(dhi,ti)=fv
+                        SNRhW(dhi,ti)=fv
+                        LDRaW(dhi,ti)=fv
+                        RefvW(dhi,ti)=fv
+                        VelvW(dhi,ti)=fv
+                        SpWvW(dhi,ti)=fv
+                        SNRvW(dhi,ti)=fv
+                enddo
+                endif
+                do dti=ti-1,ti+1
+                vmask(dti-ti+2)=0
+                do dhi=hi-1,hi+1
+                        if (RefhW(dhi,dti).gt.-90) then
+                                vmask(dti-ti+2)=vmask(dti-ti+2)+1
+                        endif
+                enddo
+                enddo
+                if ((vmask(1).eq.0).and.(vmask(2).eq.3).and.(vmask(3).eq.0)) then
+                do dhi=hi-1,hi+1
+                        RefhW(dhi,ti)=fv
+                        VelhW(dhi,ti)=fv
+                        SpWhW(dhi,ti)=fv
+                        SNRhW(dhi,ti)=fv
+                        LDRaW(dhi,ti)=fv
+                        RefvW(dhi,ti)=fv
+                        VelvW(dhi,ti)=fv
+                        SpWvW(dhi,ti)=fv
+                        SNRvW(dhi,ti)=fv
+                enddo
+                endif
+                do dhi=hi-1,hi+1
+                hmask(dhi-hi+2)=0
+                do dti=ti-1,ti+1
+                        if (RefhW(hi,ti).gt.-90) then
+                                hmask(dhi-hi+2)=hmask(dhi-hi+2)+1
+                        endif
+                enddo
+                enddo
+                if ((hmask(1)+hmask(2)+hmask(3).eq.1).and.(RefhW(hi,ti).gt.-90)) then
+                        RefhW(hi,ti)=fv
+                        VelhW(hi,ti)=fv
+                        SpWhW(hi,ti)=fv
+                        SNRhW(hi,ti)=fv
+                        LDRaW(hi,ti)=fv
+                        RefvW(hi,ti)=fv
+                        VelvW(hi,ti)=fv
+                        SpWvW(hi,ti)=fv
+                        SNRvW(hi,ti)=fv
+                endif
+        enddo
+       enddo
+ENDSUBROUTINE maskingQC
