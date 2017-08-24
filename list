@@ -37,7 +37,7 @@ export num_cpu=12								# Number of CPUs to use
 #Flag for turn on/off each progress. set if you want to do: 1, not:0
 export flag_refn=0								# Refine file directories
 export flag_ceil=0								# Convert ceilometer data files from ASCII to netCDF
-export flag_b2n=1								# Convert cloud radar data files from Binary to netCDF
+export flag_b2n=0								# Convert cloud radar data files from Binary to netCDF
 export flag_day=1								# Merge daily cloud radar data 
 export flag_plot=1								# Plot daily cloud radar data
 export flag_web=0								# Copy or modify path for web display
@@ -49,7 +49,7 @@ export flag_qc14o=1								# QC14 algorithm
 export flag_qc15o=1								# QC15 algorithm
 export flag_qc17o=1								# QC17 algorithm without ceilometer 
 export flag_qc172o=1								# QC17 algorithm with ceilometer
-export flag_overwrite=0								# Overwrite flag overwrite if this flag is 1
+export flag_overwrite=1								# Overwrite flag overwrite if this flag is 1
 
 ##Find the oldest file date
 filelist=(`ls -d $CLD_dir/BASEDATD/20****/`)					
