@@ -60,7 +60,7 @@ while [ $i -lt $dlDn ]; do
                 done
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
         fi
     fi
@@ -93,7 +93,7 @@ while [ $i -lt $dlDn ]; do
                 done
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
         fi
     fi
@@ -127,7 +127,7 @@ while [ $i -lt $dlDn ]; do
 	#sleep  0.2s
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
         fi
     fi
@@ -160,7 +160,7 @@ while [ $i -lt $dlDn ]; do
                 done
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
         fi
     fi
@@ -193,7 +193,7 @@ while [ $i -lt $dlDn ]; do
                 done
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
         fi
     fi
@@ -234,7 +234,7 @@ while [ $i -lt $dlDn ]; do
                 #sleep  0.2s
                 echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$taskname &
+	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
                 $current_dir/totalQC/crun$ppn
                 fi
         fi
