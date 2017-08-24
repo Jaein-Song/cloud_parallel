@@ -15,7 +15,7 @@ IMPLICIT NONE
 CHARACTER(len=150)                  :: Ifname,outfn,cfname
 INTEGER                             :: Nfile,tlen,fflag,dti,dhi
 INTEGER                             :: qcstat
-integer,Dimension(:)                :: qcflags(4)
+integer,Dimension(:)                :: qcflags(4),hmask(3),vmask(3)
 !2. Vars for subroutines
 !2.1 Vars for Subroutine ncread
 INTEGER                             :: nid,sts,tdim,rdim,fdim
