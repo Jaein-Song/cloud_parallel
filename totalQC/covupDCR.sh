@@ -244,4 +244,4 @@ while [ $i -lt $dlDn ]; do
 done
 echo "END"
 ppn=`printf %02g $ppn`
-echo '0' >$current_dir/doneflags/cpustat_$ppn
+echo '1' >$current_dir/doneflags/cpustat_$ppn
