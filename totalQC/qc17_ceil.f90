@@ -231,12 +231,15 @@ SUBROUTINE maskingQC
     USE varmod
     IMPLICIT NONE
     integer hmask(3),vmask(3)
+    integer mask_mat(1000,tlen)
+   
+    mask_mat=RefhW
        do ti=2,tlen-1
         do hi=2, 999
                 do dhi=hi-1,hi+1
                 hmask(dhi-hi+2)=0
                 do dti=ti-1,ti+1
-                        if (RefhW(dhi,dti).gt.-90) then
+                        if (mask_mat(dhi,dti).gt.-90*100) then
                                 hmask(dhi-hi+2)=hmask(dhi-hi+2)+1
                         endif
                 enddo
@@ -254,10 +257,23 @@ SUBROUTINE maskingQC
                         SNRvW(dhi,ti)=fv
                 enddo
                 endif
+        enddo
+       enddo
+    mask_mat=RefhW
+       do ti=2,tlen-1
+        do hi=2, 999
+                do dhi=hi-1,hi+1
+                hmask(dhi-hi+2)=0
+                do dti=ti-1,ti+1
+                        if (mask_mat(dhi,dti).gt.-90*100) then
+                                hmask(dhi-hi+2)=hmask(dhi-hi+2)+1
+                        endif
+                enddo
+                enddo
                 do dti=ti-1,ti+1
                 vmask(dti-ti+2)=0
                 do dhi=hi-1,hi+1
-                        if (RefhW(dhi,dti).gt.-90) then
+                        if (mask_mat(dhi,dti).gt.-90*100) then
                                 vmask(dti-ti+2)=vmask(dti-ti+2)+1
                         endif
                 enddo
@@ -278,7 +294,7 @@ SUBROUTINE maskingQC
                 do dhi=hi-1,hi+1
                 hmask(dhi-hi+2)=0
                 do dti=ti-1,ti+1
-                        if (RefhW(hi,ti).gt.-90) then
+                        if (mask_mat(hi,ti).gt.-90*100) then
                                 hmask(dhi-hi+2)=hmask(dhi-hi+2)+1
                         endif
                 enddo
