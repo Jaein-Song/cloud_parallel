@@ -71,8 +71,8 @@ ppn=0
 while [ $prev_job_flag -lt $num_cpu ]; do
     	export ppn=`printf %02g $ppn`
 	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
-	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 	if [ $cpustat -gt 0 ]; then
+	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 		let prev_job_flag++
 		ppn=${ppn#0}
 		let ppn++
@@ -98,8 +98,8 @@ ppn=0
 while [ $prev_job_flag -lt $num_cpu ]; do
     	export ppn=`printf %02g $ppn`
 	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
-	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 	if [ $cpustat -gt 0 ]; then
+	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 		let prev_job_flag++
 		ppn=${ppn#0}
 		let ppn++
@@ -131,8 +131,8 @@ ppn=0
 while [ $prev_job_flag -lt $num_cpu ]; do
     	export ppn=`printf %02g $ppn`
 	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
-	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 	if [ $cpustat -gt 0 ]; then
+	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 		let prev_job_flag++
 		ppn=${ppn#0}
 		let ppn++
@@ -144,7 +144,7 @@ fi
 if [ $flag_plot -gt 0 ]; then
 echo '[PROCESS] PLOT '
 export filelist=(`ls $CF_dir/DAILYMEAN/$ex_yr/*$ex_yr$ex_mn$ex_da*cfradial`)
-echo $filelist>$current_dir/filelist
+echo ${filelist[*]}>$current_dir/filelist
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
@@ -158,8 +158,8 @@ ppn=0
 while [ $prev_job_flag -lt $num_cpu ]; do
     	export ppn=`printf %02g $ppn`
 	cpustat=`cat $current_dir/doneflags/cpustat_$ppn`
-	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 	if [ $cpustat -gt 0 ]; then
+	echo cpustats are: `cat $current_dir/doneflags/cpustat*`
 		let prev_job_flag++
 		ppn=${ppn#0}
 		let ppn++
