@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 sleep 0.5
 pfidn=`pgrep $task_name`
 pfid=0
