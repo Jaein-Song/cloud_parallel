@@ -33,9 +33,10 @@ while [ $i -lt $dlDn ]; do
     ifl15n=(`ls ${dl15[$i]}/*00__THI*QC15.cfradial |wc -l`) #list of input file of the certain day
     if [ $flag_noqco -eq 1 ]; then
     if [ $iflDn -gt 10 ]; then
-        fl=(`ls ${dlD[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
+        fl=(`ls ${dlD[$i]}/*__THI*.cfradial`) #list of input file of the certain day
+	export dir=${dlD[$i]}
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
-        ymd=${ymd:0:8}
+        export ymd=${ymd:0:8}
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
 	echo 'fl:' ${fl[$i]}
