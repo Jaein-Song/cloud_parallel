@@ -50,6 +50,7 @@ export flag_qc15o=1								# QC15 algorithm
 export flag_qc17o=1								# QC17 algorithm without ceilometer 
 export flag_qc172o=1								# QC17 algorithm with ceilometer
 export flag_overwrite=1								# Overwrite flag overwrite if this flag is 1
+export time_intv=120								# time resolution of daily CLD in second 
 
 ##Find the oldest file date
 filelist=(`ls -d $CLD_dir/BASEDATD/20****/`)					
