@@ -65,4 +65,3 @@ while [ $i -le $tlen ]; do
 	let i++
 	let j++
 done
-
