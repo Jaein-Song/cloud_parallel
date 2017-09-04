@@ -122,7 +122,7 @@ echo ${dl15[*]}>$current_dir/dl15
 	while [ $ppn -lt $num_cpu ]; do
     		export ppn=`printf %02g $ppn`
 		echo '0' >$current_dir/doneflags/cpustat_$ppn
-		$current_dir/totalQC/covupDCR.sh >$current_dir/logs/day_cpu_$ppn &
+		$current_dir/totalQC/totrun.sh >$current_dir/logs/day_cpu_$ppn &
 		ppn=${ppn#0}
 		let ppn++
 	done
@@ -137,6 +137,7 @@ while [ $prev_job_flag -lt $num_cpu ]; do
 		ppn=${ppn#0}
 		let ppn++
 	fi
+	prev_job_flag=$num_cpu
 done
 fi
 
