@@ -60,9 +60,15 @@ while [ $i -lt $dln ]; do
 					q14=${q14/BASEDATC/QC14}
 					q15=${q/0_C/0_C_QC15}
 					q15=${q15/BASEDATC/QC15}
+					if [ $flag_overwrite -lt 1 ]; then
 					lgc=`ls $q |wc -l`
 					lgc14=`ls $q14 |wc -l`
 					lgc15=`ls $q15 |wc -l`
+					else
+					lgc=0
+					lgc14=0
+					lgc15=0
+					fi
 				else # PPI and RHI scan are not subject to QC14 and QC15
 					lgc=1
 					lgc14=1 
@@ -70,7 +76,11 @@ while [ $i -lt $dln ]; do
 				fi
 			else #QC14 and QC15 uses only filtered data (C)
 				if [ "$stype" = "THI" ]; then
+					if [ $flag_overwrite -lt 1 ]; then
 					lgc=`ls $q |wc -l`
+					else
+					lgc=0
+					fi
 					lgc14=1  
 					lgc15=1
 				else

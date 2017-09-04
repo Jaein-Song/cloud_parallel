@@ -26,7 +26,7 @@ while [ $i -lt $dln ]; do
             ifn1=`ls $ifname1 |wc -l`
             ifn2=`ls $ifname2 |wc -l`
             ofn=`ls $ofname1 |wc -l`
-            if [ $ofn -lt 1 ]; then
+            if [ $ofn -lt $dupl ]; then
             if [ $ifn1 -gt 0 ]; then
             if [ $ifn2 -gt 0 ]; then
                 rm ifl 

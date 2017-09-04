@@ -58,3 +58,11 @@ oldestfile=${filelist[0]##/*/}
 export sy=${oldestfile:0:4} 
 export sm=${oldestfile:4:2}
 
+
+
+
+export dupl=2
+if [ $flag_overwite -lt 1 ]; then
+	export dupl=1
+fi
+

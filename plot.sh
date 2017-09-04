@@ -12,7 +12,7 @@ while [ $i -lt $filenumber ]; do
 	figtitle=${Fig_File_out##/*/}
 	outfile=$Fig_File_out'.'$extend
 	ofn=`ls $outfile |wc -l`
-	if [ $ofn -lt 2 ]; then
+	if [ $ofn -lt $dupl ]; then
 		mkdir -p $Fulldir
 		export 	Fig_File=$Fig_File
 		export 	Fig_File_out=$Fig_File_out
