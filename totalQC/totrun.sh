@@ -12,6 +12,7 @@
 #1. Initialize
 rm $current_dir/totalQC/ifl
 
+p
 bdl=$CF_dir'/DAILYMEAN/' #output file bse directory
 dlD=(`cat $current_dir/dlD`)
 dlC=(`cat $current_dir/dlC`)
@@ -46,13 +47,12 @@ while [ $i -lt $dlDn ]; do
         if [ $ofdn -lt 1 ]; then
                 mkdir -p $ofd
         fi
-        ofn=$ofd'NCIO_CLD_noQC_NFT__daily_'$doy'_'$ymd.cfradial 
+        export ofn=$ofd'NCIO_CLD_noQC_NFT__daily_'$doy'_'$ymd.cfradial 
         ofnn=`ls $ofn |wc -l`
-        if [ $ofnn -lt 1 ]; then
+        if [ $ofnn -lt $dupl ]; then
         j=0
-        rm $current_dir/totalQC/ifl$ppn
         export flag= 0 				#QC TYPE: 00-noQC,noFIlter
-        $current_dir/infile.sh
+        $current_dir/totalQC/infile.sh
 	echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
 	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
@@ -69,23 +69,16 @@ while [ $i -lt $dlDn ]; do
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
         ofd=$bdl$y/  #output file directory
-	#ofd=./
 	ofdn=`ls -d $ofd |wc -l`
         if [ $ofdn -lt 1 ]; then
                 mkdir -p $ofd
         fi
-        ofn=$ofd'NCIO_CLD_noQC_FTD__daily_'$doy'_'$ymd.cfradial 
+        export ofn=$ofd'NCIO_CLD_noQC_FTD__daily_'$doy'_'$ymd.cfradial 
         ofnn=`ls $ofn |wc -l`
-        if [ $ofnn -lt 1 ]; then
+        if [ $ofnn -lt $dupl ]; then
         j=0
-        rm $current_dir/totalQC/ifl$ppn
-        echo 1 > $current_dir/totalQC/ifl$ppn #QC TYPE: 1-noQC,FIltered
-        echo $ofn >> $current_dir/totalQC/ifl$ppn 
-        echo $iflCn >> $current_dir/totalQC/ifl$ppn 
-                while [ $j -lt $iflCn ]; do
-                        echo ${fl[j]} >> $current_dir/totalQC/ifl$ppn 
-                        let j++
-                done
+	export flag=1
+        $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
 	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
@@ -107,20 +100,13 @@ while [ $i -lt $dlDn ]; do
         if [ $ofdn -lt 1 ]; then
                 mkdir -p $ofd
         fi
-        ofn=$ofd'NCIO_CLD_QC14_FTD__daily_'$doy'_'$ymd.cfradial 
+        export ofn=$ofd'NCIO_CLD_QC14_FTD__daily_'$doy'_'$ymd.cfradial 
         ofnn=`ls $ofn |wc -l`
-        if [ $ofnn -lt 1 ]; then
+        if [ $ofnn -lt $dupl ]; then
         j=0
-        rm $current_dir/totalQC/ifl$ppn
-        echo 14 > $current_dir/totalQC/ifl$ppn  #QC TYPE: 14-QC14,FIltered
-        echo $ofn >> $current_dir/totalQC/ifl$ppn 
-        echo $iflDn >> $current_dir/totalQC/ifl$ppn 
-                while [ $j -lt $ifl14n ]; do
-                        echo ${fl[j]} >> $current_dir/totalQC/ifl$ppn 
-                        let j++
-                done
-	#sleep  0.2s
-        echo 'EOF' >>$current_dir/totalQC/ifl$ppn
+	export flag=14
+        $current_dir/totalQC/infile.sh
+	echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
 	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
         $current_dir/totalQC/crun$ppn
@@ -141,18 +127,12 @@ while [ $i -lt $dlDn ]; do
         if [ $ofdn -lt 1 ]; then
                 mkdir -p $ofd
         fi
-        ofn=$ofd'NCIO_CLD_QC15_FTD__daily_'$doy'_'$ymd.cfradial 
+        export ofn=$ofd'NCIO_CLD_QC15_FTD__daily_'$doy'_'$ymd.cfradial 
         ofnn=`ls $ofn |wc -l`
-        if [ $ofnn -lt 1 ]; then
+        if [ $ofnn -lt $dupl ]; then
         j=0
-        rm $current_dir/totalQC/ifl$ppn
-        echo 15 > $current_dir/totalQC/ifl$ppn  #QC TYPE: 15-QC15,FIltered
-        echo $ofn >> $current_dir/totalQC/ifl$ppn
-        echo $iflDn >> $current_dir/totalQC/ifl$ppn   
-                while [ $j -lt $ifl15n ]; do
-                        echo ${fl[j]} >> $current_dir/totalQC/ifl$ppn
-                        let j++
-                done
+	export flag=15
+        $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
 	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
@@ -174,18 +154,12 @@ while [ $i -lt $dlDn ]; do
         if [ $ofdn -lt 1 ]; then
                 mkdir -p $ofd
         fi
-        ofn=$ofd'NCIO_CLD_QC17_NFT__daily_'$doy'_'$ymd.cfradial 
+        export ofn=$ofd'NCIO_CLD_QC17_NFT__daily_'$doy'_'$ymd.cfradial 
         ofnn=`ls $ofn |wc -l`
-        if [ $ofnn -lt 1 ]; then
+        if [ $ofnn -lt $dupl ]; then
         j=0
-        rm $current_dir/totalQC/ifl$ppn
-        echo 17 > $current_dir/totalQC/ifl$ppn  #QC TYPE: 17-QC17,FIltered
-        echo $ofn >> $current_dir/totalQC/ifl$ppn 
-        echo $iflDn >> $current_dir/totalQC/ifl$ppn 
-                while [ $j -lt $iflDn ]; do
-                        echo ${fl[j]} >> $current_dir/totalQC/ifl$ppn 
-                        let j++
-                done
+	export flag=17
+        $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
 	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
@@ -211,25 +185,15 @@ while [ $i -lt $dlDn ]; do
                 if [ $ofdn -lt 1 ]; then
                         mkdir -p $ofd
                 fi
-                ofn=$ofd'NCIO_CLD_QC17_CIL__daily_'$doy'_'$ymd.cfradial 
+                export ofn=$ofd'NCIO_CLD_QC17_CIL__daily_'$doy'_'$ymd.cfradial 
                 ofnn=`ls $ofn |wc -l`
-                if [ $ofnn -lt 1 ]; then
+                if [ $ofnn -lt $dupl ]; then
                 j=0
-                rm $current_dir/totalQC/ifl$ppn
-                echo 172 > $current_dir/totalQC/ifl$ppn  #QC TYPE: 17-QC17,FIltered
-                #sleep  0.2s
-                echo $ofn >> $current_dir/totalQC/ifl$ppn 
-                #sleep  0.2s
-                echo $iflDn >> $current_dir/totalQC/ifl$ppn 
-                #sleep  0.2s
-                        while [ $j -lt $iflDn ]; do
-                                echo ${fl[j]} >> $current_dir/totalQC/ifl$ppn 
-                                let j++
-                        done
-                #sleep  0.2s
+		export flag=172
+	        $current_dir/totalQC/infile.sh
                 echo 'EOF' >>$current_dir/totalQC/ifl$ppn
-	export task_name=crun$ppn
-	$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
+		export task_name=crun$ppn
+		$current_dir/cpu_proc.sh >> $current_dir/logs/cpulog_$task_name &
                 $current_dir/totalQC/crun$ppn
                 fi
         fi
