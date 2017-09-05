@@ -16,7 +16,8 @@ IMPLICIT NONE
 open(11,file=totifl1,status='old')
 read(11,*) qcstat
 read(11,'(a150)') outfn
-read(11,*) Nfile
+read(11,*) tlen
+
 if (qcstat.eq.172) then
     open(33,file=totcfl1,status='old')
     read(33,'(a150)'),cfname
@@ -35,11 +36,6 @@ if (qcstat.eq.172) then
     sts=NF90_CLOSE(nid_ceil)
 endif
 
-if (Nfile.gt.720) then
-    tlen=1440
-else
-    tlen=720
-endif
 !ALLOCATE NAN files
 ALLOCATE(RefhW(1000,tlen),RefvW(1000,tlen),VelhW(1000,tlen),VelvW(1000,tlen),SpWhW(1000,tlen),SpWvW(1000,tlen),SNRhW(1000,tlen),SNRvW(1000,tlen),LDRaW(1000,tlen))
 ALLOCATE(prtar(tlen),PW(tlen),prtr(tlen),nyq(tlen),n_samples(tlen))
@@ -57,6 +53,7 @@ prtr=fv
 nyq=fv
 n_samples=fv
 prtar=fv
+read(11,*)
 read(11,'(a150)') Ifname
 !print*,Ifname
 fflag=1

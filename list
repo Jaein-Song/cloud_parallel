@@ -33,6 +33,12 @@ export options='-ffree-line-length-512'						# Set Fortran Compiler options (sel
 export FC_NC_lib='-I'$NETCDF'/include -L'$NETCDF'/lib -lnetcdf -lnetcdff'	# NetCDF library PATH for compiler option
 export num_cpu=12								# Number of CPUs to use 
 
+##FILE SETTING
+export CLD_flen=45								# Time coverage of file in seond (Cloud Radar)
+export CLD_fcount=500								# Numbers of measurement in file (Cloud Radar)
+export CLD_tres=90								# Temporal resolution of measurement in ms (Cloud Radar)
+
+
 ##SWITCH 
 #Flag for turn on/off each progress. set if you want to do: 1, not:0
 export flag_refn=0								# Refine file directories

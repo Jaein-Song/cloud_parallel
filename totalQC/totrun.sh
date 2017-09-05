@@ -12,7 +12,6 @@
 #1. Initialize
 rm $current_dir/totalQC/ifl
 
-p
 bdl=$CF_dir'/DAILYMEAN/' #output file bse directory
 dlD=(`cat $current_dir/dlD`)
 dlC=(`cat $current_dir/dlC`)
