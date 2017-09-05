@@ -53,7 +53,7 @@ prtr=fv
 nyq=fv
 n_samples=fv
 prtar=fv
-read(11,*)
+read(11,*) time,Nfile, 
 read(11,'(a150)') Ifname
 !print*,Ifname
 fflag=1

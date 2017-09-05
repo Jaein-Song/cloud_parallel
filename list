@@ -68,7 +68,7 @@ export sm=${oldestfile:4:2}
 
 
 export dupl=2
-if [ $flag_overwite -lt 1 ]; then
+if [ $flag_overwrite -lt 1 ]; then
 	export dupl=1
 fi
 

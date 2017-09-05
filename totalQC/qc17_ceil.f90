@@ -230,8 +230,8 @@ END SUBROUTINE qc17_ceil
 SUBROUTINE maskingQC
     USE varmod
     IMPLICIT NONE
-    integer hmask(3),vmask(3)
-    integer mask_mat(1000,tlen)
+    integer,dimension(:)        :: hmask(3),vmask(3)
+    integer,dimension(:,:)      ::  mask_mat(1000,tlen)
    
     mask_mat=RefhW
        do ti=2,tlen-1
