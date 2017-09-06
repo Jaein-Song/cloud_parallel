@@ -67,8 +67,8 @@ SUBROUTINE qc17_ceil
                             VelhF=0
                         ENDIF
                     else
-!1.2. Exception Z>0: V>-10
-                         IF (VelhI(ti,hi).gt.-15) then
+!1.2. Exception Z>0: V>-20
+                         IF (VelhI(ti,hi).gt.-20) then
                             VelhF=1
                         else
                             VelhF=0
@@ -104,7 +104,7 @@ SUBROUTINE qc17_ceil
             ENDIF
 !Do the same thing for the xpol
 !2.0 xpol Echo existance
-            IF (RefvI(ti,hi).gt.-100) then
+            IF (RefvI(ti,hi).gt.-Ref_low_thres) then
                 RefvF=1
 !2.1 Radial Velocity condition
                 IF (VelvI(ti,hi).lt.5) then
@@ -116,7 +116,7 @@ SUBROUTINE qc17_ceil
                         ENDIF
                     else
 !2.2. Exception Z>0: V>-10
-                         IF (VelvI(ti,hi).gt.-15) then
+                         IF (VelvI(ti,hi).gt.-20) then
                             VelvF=1
                         else
                             VelvF=0
