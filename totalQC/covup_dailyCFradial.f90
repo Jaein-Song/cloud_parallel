@@ -53,23 +53,24 @@ prtr=fv
 nyq=fv
 n_samples=fv
 prtar=fv
-read(11,*) time,Nfile, 
-read(11,'(a150)') Ifname
-!print*,Ifname
-fflag=1
+read(11,*) filehead
+if (filehead(1:1).eq.'E') then
+    fflag=0
+else
+    read(filehead,*) time,Nfile,ftlen
+    fflag=1
+endif
 print*,outfn,outfn(1:1)
-if (Ifname(1:1).eq.'E') fflag=0
+
 do while (fflag==1)
     call ncread
     if (fflag.eq.1)then
-    PW(time)=pulse_widtharrI(1)
-    prtr(time)=prt_ratioarrI(1)
-    nyq(time)=nyq_VelarrI(1)
-    n_samples(time)=500
-    prtar(time)=PRTI(1)
-    DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)
-    endif
-    if (fflag.eq.1) then
+        PW(time)        = pulse_widtharrI(1)
+        prtr(time)      = prt_ratioarrI(1)
+        nyq(time)       = nyq_VelarrI(1)
+        n_samples(time) = ftlen
+        prtar(time)     = PRTI(1)
+        DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)
         if (qcstat.eq.0) call noqcavg
         if (qcstat.eq.1) call noqcavg
         if (qcstat.eq.14) call knuavg
@@ -90,9 +91,32 @@ do while (fflag==1)
         end do
         DEALLOCATE(RefhO,VelhO,SpWhO,SNRhO,LDRaO)
         DEALLOCATE(RefvO,VelvO,SpWvO,SNRvO)
-        read(11,'(a150)') Ifname
-        !print*,Ifname
-        if (Ifname(1:1).eq.'E') fflag=0
+        read(11,'(a20)') filehead
+
+        if (filehead(1:1).eq.'E') then
+            fflag=0
+        else
+            read(filehead,*) time,Nfile,ftlen
+            fflag=1
+        endif
+    elseif (fflag.eq.2) then
+        PW(time)        = fv
+        prtr(time)      = fv
+        nyq(time)       = fv
+        prtar(time)     = fv
+        n_samples(time) = 0
+        DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)        
+        do hi = 1, 1000
+            RefhW(hi,time)=fv
+            RefvW(hi,time)=fv
+            VelhW(hi,time)=fv
+            VelvW(hi,time)=fv
+            SpWhW(hi,time)=fv
+            SpWvW(hi,time)=fv
+            SNRhW(hi,time)=fv
+            SNRvW(hi,time)=fv
+            LDRaW(hi,time)=fv
+        end do
     endif
 enddo
 print*,outfn
