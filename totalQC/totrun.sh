@@ -64,7 +64,7 @@ while [ $i -lt $dlDn ]; do
     if [ $iflCn -gt 10 ]; then
         fl=(`ls ${dlC[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
-        ymd=${ymd:0:8}
+        export ymd=${ymd:0:8}
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
         ofd=$bdl$y/  #output file directory
@@ -91,7 +91,7 @@ while [ $i -lt $dlDn ]; do
     if [ $ifl14n -gt 10 ]; then
         fl=(`ls ${dl14[$i]}/*00__THI*QC14.cfradial`) #list of input file of the certain day
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
-        ymd=${ymd:0:8}
+        export ymd=${ymd:0:8}
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
         ofd=$bdl$y/  #outaput file directory
@@ -119,7 +119,7 @@ while [ $i -lt $dlDn ]; do
     if [ $ifl15n -gt 10 ]; then
         fl=(`ls ${dl15[$i]}/*00__THI*QC15.cfradial`) #list of input file of the certain day
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
-        ymd=${ymd:0:8}
+        export ymd=${ymd:0:8}
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
         ofd=$bdl$y/  #outaput file directory
@@ -147,7 +147,7 @@ while [ $i -lt $dlDn ]; do
     if [ $iflDn -gt 10 ]; then
         fl=(`ls ${dlD[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
-        ymd=${ymd:0:8}
+        export ymd=${ymd:0:8}
         y=${ymd:0:4}
         doy=`date -d $ymd +%j`
         ofd=$bdl$y/  #output file directory
@@ -174,7 +174,7 @@ while [ $i -lt $dlDn ]; do
     if [ $flag_qc172o -eq 1 ]; then
     if [ $iflDn -gt 10 ]; then
         fl=(`ls ${dlD[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
-        ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
+        export ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
         ymd=${ymd:0:8}
 	echo $ymd $fl[1]
         doy=`date -d $ymd +%j`
