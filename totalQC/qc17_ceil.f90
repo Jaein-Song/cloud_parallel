@@ -104,9 +104,10 @@ SUBROUTINE qc17_ceil
             ENDIF
 !Do the same thing for the xpol
 !2.0 xpol Echo existance
-            IF (RefvI(ti,hi).gt.-Ref_low_thres) then
+            IF (RefvI(ti,hi).gt.-100.) then
                 RefvF=1
 !2.1 Radial Velocity condition
+                
                 IF (VelvI(ti,hi).lt.5) then
                     IF (RefvI(ti,hi).lt.0) then
                         IF (VelvI(ti,hi).gt.-5) then
@@ -115,7 +116,7 @@ SUBROUTINE qc17_ceil
                             VelvF=0
                         ENDIF
                     else
-!2.2. Exception Z>0: V>-10
+!2.2. Exception Z>0: V>-20
                          IF (VelvI(ti,hi).gt.-20) then
                             VelvF=1
                         else
@@ -129,19 +130,32 @@ SUBROUTINE qc17_ceil
             else
                 RefvF=0
             ENDIF
-            Qflagv(ti)=RefvF*VelvF
-            Qflagsv=Qflagsv+Qflagv(ti)
             Qflag(ti)=RefhF*VelhF*LDRaF
             Qflags=Qflags+Qflag(ti)
+            if (Qflag(ti).eq.1) then
+                Qflagv(ti)=RefvF
+            else
+                Qflagv(ti)=RefvF*VelvF
+            endif
+                Qflagsv=Qflagsv+Qflagv(ti)
         ENDDO
 !3. Data process for COPOL
 !3.1. Frequency Check
         QC_flag=0
 !        if (cbh.gt.500) then
                 if (valid.lt.1) then
-                        if ((Qflags.ge.0.8*num_valid_cell).and.(num_valid_cell.gt.250)) QC_flag=1
+                        if (hi.lt.20) then
+                            if ((Qflags.ge.0.9*num_valid_cell).and.(num_valid_cell.gt.200)) QC_flag=1
+                        else
+                            if ((Qflags.ge.0.8*num_valid_cell).and.(num_valid_cell.gt.200)) QC_flag=1
+                        endif
                 else
                         if ((num_valid_cell.gt.0).and.(Qflags.ge.0.8*num_valid_cell).and.(10*Qflags*count.ge.3*valid*ftlen) ) QC_flag=1
+                endif
+                if (hi.gt.1) then
+                        if (RefhO(hi-1).gt.-100) then
+                            if ((Qflags.ge.0.6*num_valid_cell).and.(num_valid_cell.gt.100)) QC_flag=1
+                        endif
                 endif
 !        else
 !                if (valid.lt.1) then
@@ -177,7 +191,9 @@ SUBROUTINE qc17_ceil
                 endif
 !4. Data process for xpol only if copol data exisist
 !4.1. frequency check for xpol
+                print*, 'out: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
                 IF ( (Qflagsv.ge.ratio_qc17*ftlen).and.(RefhO(hi).ge.Ref_low_thres*100) ) then
+                print*, 'in: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
 !4.2. Average Data for xpol
                 Refvs=0;
                 Velvs=0;
@@ -195,7 +211,7 @@ SUBROUTINE qc17_ceil
                     VelvO(hi)=(Velvs/Qflagsv)/Vsf
                     SpWvO(hi)=(SpWvs/Qflagsv)/Wsf
                     SNRvO(hi)=(10*log10(SNRvs/Qflags))/Ssf
-                    LDRas=10*log10(Refvs/Qflagsv)-10*log10(Refhs/Qflags)
+                    LDRas=10*log10(Refhs/Qflags)-10*log10(Refvs/Qflagsv)
                     LDRaO(hi)=LDRas/Lsf
 !Average Data done
                else
