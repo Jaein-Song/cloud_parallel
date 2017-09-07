@@ -169,15 +169,15 @@ while [ $i -lt $dlDn ]; do
 
     if [ $flag_qc172o -eq 1 ]; then
     if [ $iflDn -gt 10 ]; then
-        ceiln=`ls $ceil_cdf_dir/$y/*LV3*$ymd.cdf |wc -l`
-        if [ $ceiln -gt 0 ]; then
-                echo `ls $ceil_cdf_dir/$y/*LV3*$ymd.cdf` >$current_dir/totalQC/cfl$ppn
-                fl=(`ls ${dlD[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
+        fl=(`ls ${dlD[$i]}/*00__THI*.cfradial`) #list of input file of the certain day
         ymd=${fl[1]##/*HMBR_BS_} #Year, Month, Date
         ymd=${ymd:0:8}
 	echo $ymd $fl[1]
         doy=`date -d $ymd +%j`
         y=${ymd:0:4}
+        ceiln=`ls $ceil_cdf_dir/$y/*LV3*$ymd.cdf |wc -l`
+        if [ $ceiln -gt 0 ]; then
+                echo `ls $ceil_cdf_dir/$y/*LV3*$ymd.cdf` >$current_dir/totalQC/cfl$ppn
                 ofd=$bdl$y/  #output file directory
                 #ofd=./
                 ofdn=`ls -d $ofd |wc -l`
