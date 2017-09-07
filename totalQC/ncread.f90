@@ -30,6 +30,7 @@ do filei=1,Nfile
     sts=NF90_INQUIRE_DIMENSION(nid,fdim,frqdim,frqlen)
     binlen=1000
     !1.2. Allocate data
+    if (filei.gt.1) DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)
     ALLOCATE(frequencyarrI(frqlen),PRTI(ftlen_NC),pulse_widtharrI(ftlen_NC),prt_ratioarrI(ftlen_NC),nyq_VelarrI(ftlen_NC),n_samplesarrI(ftlen_NC))
     ALLOCATE(RefhN(binlen,ftlen_NC),VelhN(binlen,ftlen_NC),SpWhN(binlen,ftlen_NC),SNRhN(binlen,ftlen_NC))
     ALLOCATE(RefvN(binlen,ftlen_NC),VelvN(binlen,ftlen_NC),SpWvN(binlen,ftlen_NC),SNRvN(binlen,ftlen_NC),LDRaN(binlen,ftlen_NC))
