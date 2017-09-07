@@ -25,9 +25,9 @@ while [ $k -lt $fln ]; do
 	hf=${hmsf[$k]:0:2}
 	mf=${hmsf[$k]:2:2}
 	sf=${hmsf[$k]:4:2}
-	hf= ${hf#0}
-	mf= ${mf#0}
-	sf= ${sf#0}
+	hf=${hf#0}
+	mf=${mf#0}
+	sf=${sf#0}
 	hf=`expr $hf \* 3600`
 	mf=`expr $mf \* 60`
 	timef[$k]=`expr $hf + $mf + $sf`
