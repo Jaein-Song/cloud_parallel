@@ -14,7 +14,7 @@ subroutine ncread
 Istart=1
 do filei=1,Nfile
     read(11,*) file_start,file_end
-    read(11,*) Ifname
+    read(11,'(a150)') Ifname
     
 !1.   read unfiltered (D) cfradial file
     sts=NF90_OPEN(Ifname,nf90_nowrite,nid); CALL CE(sts,'"'//Ifname//'"'//'\n')
