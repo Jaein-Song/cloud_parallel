@@ -113,7 +113,7 @@ echo '[PROCESS] MERGE DAILY (DAY)'
 export dlD=(`ls -d $CF_dir/BASEDATD/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
 echo ${dlD[*]}>$current_dir/dlD
 export dlC=(`ls -d $CF_dir/BASEDATC/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
-echo $dlC[*]}>$current_dir/dlC
+echo ${dlC[*]}>$current_dir/dlC
 export dl14=(`ls -d $CF_dir/QC14/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
 echo ${dl14[*]}>$current_dir/dl14
 export dl15=(`ls -d $CF_dir/QC15/$ex_yr$ex_mn/$ex_yr$ex_mn$ex_da`) #total directory list: only nofilter files
