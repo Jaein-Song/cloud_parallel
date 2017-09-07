@@ -53,7 +53,7 @@ prtr=fv
 nyq=fv
 n_samples=fv
 prtar=fv
-read(11,*) filehead
+read(11,'(a20)') filehead
 if (filehead(1:1).eq.'E') then
     fflag=0
 else
