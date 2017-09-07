@@ -13,7 +13,7 @@ mrs[$i]=`printf %02g ${mr[$i]}`
 srs[$i]=`printf %02g ${sr[$i]}`
 hmsr[$i]=${hrs[$i]}${mrs[$i]}${srs[$i]}
 timer[$i]=0
-fl=(`ls ${dir[$i]}/*THI_900*.cfradial`)
+fl=(`ls $dir/*THI_900*.cfradial`)
 fln=${#fl[*]}
 let i++
 j=0

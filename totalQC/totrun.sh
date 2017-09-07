@@ -77,6 +77,7 @@ while [ $i -lt $dlDn ]; do
         if [ $ofnn -lt $dupl ]; then
         j=0
 	export flag=1
+	export dir=${dlC[$i]}
         $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
@@ -104,6 +105,7 @@ while [ $i -lt $dlDn ]; do
         if [ $ofnn -lt $dupl ]; then
         j=0
 	export flag=14
+	export dir=${dl14[$i]}
         $current_dir/totalQC/infile.sh
 	echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
@@ -131,6 +133,7 @@ while [ $i -lt $dlDn ]; do
         if [ $ofnn -lt $dupl ]; then
         j=0
 	export flag=15
+	export dir=${dl15[$i]}
         $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
@@ -158,6 +161,7 @@ while [ $i -lt $dlDn ]; do
         if [ $ofnn -lt $dupl ]; then
         j=0
 	export flag=17
+	export dir=${dlD[$i]}
         $current_dir/totalQC/infile.sh
         echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 	export task_name=crun$ppn
@@ -189,6 +193,7 @@ while [ $i -lt $dlDn ]; do
                 if [ $ofnn -lt $dupl ]; then
                 j=0
 		export flag=172
+	export dir=${dlD[$i]}
 	        $current_dir/totalQC/infile.sh
                 echo 'EOF' >>$current_dir/totalQC/ifl$ppn
 		export task_name=crun$ppn
