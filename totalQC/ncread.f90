@@ -31,12 +31,12 @@ do filei=1,Nfile
     binlen=1000
     !1.2. Allocate data
     if (filei.gt.1) DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)
+    if (filei.eq.1) ALLOCATE(RefhI(ftlen,binlen),VelhI(ftlen,binlen),SpWhI(ftlen,binlen),SNRhI(ftlen,binlen))
+    ALLOCATE(RefvI(ftlen,binlen),VelvI(ftlen,binlen),SpWvI(ftlen,binlen),SNRvI(ftlen,binlen),LDRaI(ftlen,binlen),WavePRF(ftlen_NC))
     ALLOCATE(frequencyarrI(frqlen),PRTI(ftlen_NC),pulse_widtharrI(ftlen_NC),prt_ratioarrI(ftlen_NC),nyq_VelarrI(ftlen_NC),n_samplesarrI(ftlen_NC))
     ALLOCATE(RefhN(binlen,ftlen_NC),VelhN(binlen,ftlen_NC),SpWhN(binlen,ftlen_NC),SNRhN(binlen,ftlen_NC))
     ALLOCATE(RefvN(binlen,ftlen_NC),VelvN(binlen,ftlen_NC),SpWvN(binlen,ftlen_NC),SNRvN(binlen,ftlen_NC),LDRaN(binlen,ftlen_NC))
 
-    ALLOCATE(RefhI(ftlen,binlen),VelhI(ftlen,binlen),SpWhI(ftlen,binlen),SNRhI(ftlen,binlen))
-    ALLOCATE(RefvI(ftlen,binlen),VelvI(ftlen,binlen),SpWvI(ftlen,binlen),SNRvI(ftlen,binlen),LDRaI(ftlen,binlen),WavePRF(ftlen_NC))
     if (Ifname(1:1).ne.'/') then
         fflag_in=0
     elseif (Ifname(1:1).eq.'E') then
