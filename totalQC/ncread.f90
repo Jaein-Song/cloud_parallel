@@ -125,17 +125,17 @@ do filei=1,Nfile
         !call tims2i(tcs,ye,mn,da,ho,mi,se)
         !time=(mi-mod(mi,tscl))/tscl+1+ho*60/tscl
         Iend=(file_end-file_start)+Istart
-        do ti=1,file_end-file_start+1
+        do ti=1,file_end-file_start
             do hi=1,binlen
-                RefhI(Istart+ti,hi)=RefhN(hi,file_start-1+ti)*Zsf+offset
-                RefvI(Istart+ti,hi)=RefvN(hi,file_start-1+ti)*Zsf+offset
-                VelhI(Istart+ti,hi)=VelhN(hi,file_start-1+ti)*Vsf+offset
-                VelvI(Istart+ti,hi)=VelvN(hi,file_start-1+ti)*Vsf+offset
-                SpWhI(Istart+ti,hi)=SpWhN(hi,file_start-1+ti)*Wsf+offset
-                SpWvI(Istart+ti,hi)=SpWvN(hi,file_start-1+ti)*Wsf+offset
-                SNRhI(Istart+ti,hi)=SNRhN(hi,file_start-1+ti)*Ssf+offset
-                SNRvI(Istart+ti,hi)=SNRvN(hi,file_start-1+ti)*Ssf+offset
-                LDRaI(Istart+ti,hi)=LDRaN(hi,file_start-1+ti)*Lsf+offset
+                RefhI(Istart+ti,hi)=RefhN(hi,file_start+ti)*Zsf+offset
+                RefvI(Istart+ti,hi)=RefvN(hi,file_start+ti)*Zsf+offset
+                VelhI(Istart+ti,hi)=VelhN(hi,file_start+ti)*Vsf+offset
+                VelvI(Istart+ti,hi)=VelvN(hi,file_start+ti)*Vsf+offset
+                SpWhI(Istart+ti,hi)=SpWhN(hi,file_start+ti)*Wsf+offset
+                SpWvI(Istart+ti,hi)=SpWvN(hi,file_start+ti)*Wsf+offset
+                SNRhI(Istart+ti,hi)=SNRhN(hi,file_start+ti)*Ssf+offset
+                SNRvI(Istart+ti,hi)=SNRvN(hi,file_start+ti)*Ssf+offset
+                LDRaI(Istart+ti,hi)=LDRaN(hi,file_start+ti)*Lsf+offset
             enddo
         enddo
         Istart=Iend+1
