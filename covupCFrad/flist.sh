@@ -2,7 +2,8 @@
 ibd=$CLD_dir
 dl=(`cat $current_dir/dl`)
 dln=${#dl[*]}
-i=${ppn#0}
+#i=${ppn#0}
+i=0
 while [ $i -lt $dln ]; do
 	echo processing file at ${dl[$i]}
 	fl=(`ls ${dl[$i]}/*THI_900*.OBS`)
@@ -44,7 +45,7 @@ while [ $i -lt $dln ]; do
 	flagt=`expr $flagno + $flag14 + $flag15 `
 	if [ $flagt -lt 3 ]; then
 	if [ $fln -gt 1 ]; then
-	j=0
+	j=${ppn#0}
 		while [ $j -lt $fln ]; do
 		p=${fl[$j]}
 		pl=`du $p`
@@ -116,12 +117,13 @@ echo "EOF" >> $current_dir/covupCFrad/ofl15$ppn
 			$current_dir/covupCFrad/frun$ppn
 			fi
 		fi
-		let j++
+		j=`expr $j + $num_cpu`
+#		let j++
 		done
 	fi
 	fi
-#	let i++
-	i=`expr $i + $num_cpu`
+	let i++
+#	i=`expr $i + $num_cpu`
 done
 ppn=`printf %02g $ppn`
 echo '1' >$current_dir/doneflags/cpustat_$ppn

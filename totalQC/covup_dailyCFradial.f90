@@ -75,8 +75,8 @@ do while (fflag==1)
         if (qcstat.eq.1) call noqcavg
         if (qcstat.eq.14) call knuavg
         if (qcstat.eq.15) call knuavg
-        if (qcstat.eq.17) call qc17avg
-        if (qcstat.eq.172) call qc17_ceil
+        if (qcstat.eq.17) call qc17
+        if (qcstat.eq.172) call qc17
 
         do hi = 1, 1000
             RefhW(hi,time)=RefhO(hi)

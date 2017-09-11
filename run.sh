@@ -137,7 +137,6 @@ while [ $prev_job_flag -lt $num_cpu ]; do
 		ppn=${ppn#0}
 		let ppn++
 	fi
-	prev_job_flag=$num_cpu
 done
 fi
 

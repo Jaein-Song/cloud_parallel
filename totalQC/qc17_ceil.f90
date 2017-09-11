@@ -1,4 +1,4 @@
-SUBROUTINE qc17_ceil
+SUBROUTINE qc17
 !Quallity Check & Merge data
 !Cloud count only if when the echo satisfies below condition
 !0. ALLOCATE and initialize variables
@@ -26,21 +26,26 @@ SUBROUTINE qc17_ceil
     ALLOCATE(Qflag(ftlen),Qflagv(ftlen))
     ALLOCATE(RefhO(binlen),VelhO(binlen),SpWhO(binlen),SNRhO(binlen),LDRaO(binlen))
     ALLOCATE(RefvO(binlen),VelvO(binlen),SpWvO(binlen),SNRvO(binlen))
-    cbh=cbh1(time)
-    count=ncbh(time)
-    valid=vcbh(time)
-    !if (valid.gt.0) cvratio=count/valid
+    if (qcstat.eq.172) then !QC17CEIL
+            cbh=cbh1(time)
+            count=ncbh(time)
+            valid=vcbh(time)
+    else !QC17
+        valid=0
+    endif
+
 !Get the height of the low level cloud under PBLH
     if (valid.lt.1) then
-        min_hi=200
-        llcflag=0
+           min_hi=200
+           llcflag=0
     elseif (cbh.lt.3000) then
-        min_hi=(cbh-mod(cbh,15.))/15+1
-        llcflag=1
+            min_hi=(cbh-mod(cbh,15.))/15+1
+            llcflag=1
     else
-        min_hi=200
-        llcflag=0
+            min_hi=200
+            llcflag=0
     endif
+
     DO hi=1,binlen
         Qflags=0
         Qflagsv=0
@@ -55,35 +60,41 @@ SUBROUTINE qc17_ceil
         Qflagv(ti)=0
 !1.  COPOL QC
 !1.0 Echo existance
-            IF (RefhI(ti,hi).gt.Ref_low_thres) then
+            IF (RefhI(ti,hi).lt.Ref_low_thres) then
+                RefhF=0
+                VelhF=0
+            ELSEIF ((RefhI(ti,hi).lt.-25).and.(hi.le.200)) then 
+!1.1 Validity for LLCs
+!under 3km(regarded as boundary layer) no convective cloud, but at the top of the convective cloud, could be
                 RefhF=1
                 num_valid_cell=num_valid_cell+1
-!1.1 Radial Velocity condition
-                IF (VelhI(ti,hi).lt.5) then
-                    IF (RefhI(ti,hi).lt.0) then
-                        IF (VelhI(ti,hi).gt.-5) then
-                            VelhF=1
-                        else
-                            VelhF=0
-                        ENDIF
-                    else
-!1.2. Exception Z>0: V>-20
-                         IF (VelhI(ti,hi).gt.-20) then
-                            VelhF=1
-                        else
-                            VelhF=0
-                        ENDIF
-                    ENDIF
-                else
-                    VelhF=0
-                ENDIF
-                if ((RefhI(ti,hi).lt.-25).and.(hi.le.200)) then !under 3km(regarded as boundary layer) no convective cloud, but at the top of the convective cloud, could be
                     if ( (VelhI(ti,hi).lt.1).and.(VelhI(ti,hi).gt.-1) ) then
                         VelhF=1
                     else
                         velhf=0
                     end if
                 endif
+            ELSEIF (RefhI(ti,hi).lt.0) then
+                RefhF=1
+                num_valid_cell=num_valid_cell+1
+!1.2 Validity for ordinary clouds 
+                IF ((VelhI(ti,hi).lt.5).and.(VelhI(ti,hi).gt.-5)) then
+                    IF (VelhI(ti,hi).gt.-5) then
+                            VelhF=1
+                        else
+                            VelhF=0
+                        ENDIF
+                    ENDIF
+            ELSE
+!1.3. Validity for precipitating clouds/precipitation Z>0: V>-20
+                RefhF=1
+                num_valid_cell=num_valid_cell+1
+                    IF (VelhI(ti,hi).gt.-20) then
+                        VelhF=1
+                    else
+                        VelhF=0
+                    ENDIF
+            ENDIF
 !copol Velocity Condition Check END
 !1.3. LDR check
                 IF (RefhI(ti,hi).gt.0) then !MELTINGLAYAER
@@ -100,7 +111,6 @@ SUBROUTINE qc17_ceil
                         ENDIF
                 endif
             else
-                RefhF=0
             ENDIF
 !Do the same thing for the xpol
 !2.0 xpol Echo existance
