@@ -56,12 +56,9 @@ while [ $i -le $tlen ]; do
                 if [ ${timef[$k]} -lt ${timer[$i]} ]; then
                         while [ ${timee[$k]} -lt ${timer[$j]} ]; do
                                 let k++
-                                echo $ymd $i $k
                         done
                         n=0
                         m=$k
-			echo k: $k i: $i timef: ${timef[$k]} timer: ${timer[$i]}
-			echo ${fl[$k]}
                         while [ ${timef[$k]} -lt ${timer[$i]} ]; do
                                 let n++
                                 let k++
