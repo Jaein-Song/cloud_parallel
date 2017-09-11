@@ -63,9 +63,7 @@ endif
 print*,outfn,outfn(1:1)
 
 do while (fflag==1)
-print*,'WHEREAREYOU?1'
     call ncread
-print*,'WHEREAREYOU?2'
     if (fflag.eq.1)then
         PW(time)        = pulse_widtharrI(1)
         prtr(time)      = prt_ratioarrI(1)
@@ -73,7 +71,6 @@ print*,'WHEREAREYOU?2'
         n_samples(time) = ftlen
         prtar(time)     = PRTI(1)
         DEALLOCATE(frequencyarrI,PRTI,pulse_widtharrI,prt_ratioarrI,nyq_VelarrI,n_samplesarrI,WavePRF)
-print*,'WHEREAREYOU?3'
         if (qcstat.eq.0) call noqcavg
         if (qcstat.eq.1) call noqcavg
         if (qcstat.eq.14) call knuavg
@@ -95,7 +92,6 @@ print*,'WHEREAREYOU?3'
         DEALLOCATE(RefhO,VelhO,SpWhO,SNRhO,LDRaO)
         DEALLOCATE(RefvO,VelvO,SpWvO,SNRvO)
         read(11,'(a20)') filehead
-print*,'WHEREAREYOU?4'
 
         if (filehead(1:1).eq.'E') then
             fflag=0
@@ -103,7 +99,6 @@ print*,'WHEREAREYOU?4'
             read(filehead,*) time,Nfile,ftlen
             fflag=1
         endif
-print*,'WHEREAREYOU?5'
     elseif (fflag.eq.2) then
         PW(time)        = fv
         prtr(time)      = fv
