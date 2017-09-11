@@ -123,7 +123,6 @@ do filei=1,Nfile
         tscl=1440/tlen
 !3. Convert variables from char to int or int to real etc.
         nbin=file_end-file_start+1
-        Iend=Iend+nbin
 
         do ti=1,nbin
             do hi=1,binlen
@@ -138,6 +137,7 @@ do filei=1,Nfile
                 LDRaI(Iend+ti,hi)=LDRaN(hi,file_start-1+ti)*Lsf+offset
             enddo
         enddo
+        Iend=Iend+nbin
         if (frqlen.eq.1) then
             PRFIN(1)=frequencyarrI(1)
         else
