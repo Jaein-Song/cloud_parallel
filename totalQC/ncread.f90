@@ -11,7 +11,7 @@ subroutine ncread
 !3. Convert variables from char to int or int to real etc.
 ! FILE FLOW::
 !   ND or NC > IND or INC *transpose, int to float
-Istart=1
+Iend=0
 do filei=1,Nfile
     read(11,*) file_start,file_end
     read(11,'(a150)') Ifname
@@ -51,40 +51,40 @@ do filei=1,Nfile
     if (fflag_in.ne.1) fflag=fflag_in
     if (fflag_in.eq.1) then
         !1.3. read Metadata (Head)
-        sts=NF90_INQ_VARID(ncid,'latitude', latitudeID)
-        sts=NF90_INQ_VARID(ncid,'longitude', longitudeID)
-        sts=NF90_INQ_VARID(ncid,'altitude', altitudeID)
-        sts=NF90_GET_VAR(ncid, latitudeID,Lat)
-        sts=NF90_GET_VAR(ncid, longitudeID,Lon)
-        sts=NF90_GET_VAR(ncid, altitudeID,Alt)
-        sts=NF90_INQ_VARID(ncid,'frequency', frequencyID)
-        sts=NF90_GET_VAR(ncid, frequencyID, frequencyarrI)
-        sts=NF90_INQ_VARID(ncid,'pulse_width', pulse_widthID)
-        sts=NF90_GET_VAR(ncid, pulse_widthID, pulse_widtharrI)
-        sts=NF90_INQ_VARID(ncid,'prt_mode', prt_modeID)
-        sts=NF90_GET_VAR(ncid, prt_modeID, prtmodeI)
+        sts=NF90_INQ_VARID(nid,'latitude', latitudeID)
+        sts=NF90_INQ_VARID(nid,'longitude', longitudeID)
+        sts=NF90_INQ_VARID(nid,'altitude', altitudeID)
+        sts=NF90_GET_VAR(nid, latitudeID,Lat)
+        sts=NF90_GET_VAR(nid, longitudeID,Lon)
+        sts=NF90_GET_VAR(nid, altitudeID,Alt)
+        sts=NF90_INQ_VARID(nid,'frequency', frequencyID)
+        sts=NF90_GET_VAR(nid, frequencyID, frequencyarrI)
+        sts=NF90_INQ_VARID(nid,'pulse_width', pulse_widthID)
+        sts=NF90_GET_VAR(nid, pulse_widthID, pulse_widtharrI)
+        sts=NF90_INQ_VARID(nid,'prt_mode', prt_modeID)
+        sts=NF90_GET_VAR(nid, prt_modeID, prtmodeI)
         if (prtmodeI(1:1).eq.'d') then
             FreqMode=2
         else
             FreqMode=1
         endif
-        sts=NF90_INQ_VARID(ncid, 'prt', prtID)
-        sts=NF90_GET_VAR(ncid, prtID, PRTI)
+        sts=NF90_INQ_VARID(nid, 'prt', prtID)
+        sts=NF90_GET_VAR(nid, prtID, PRTI)
         do ti=1,ftlen_NC
             WavePRF(ti)=1./PRTI(ti)
         enddo
         if ( FreqMode .EQ. 2 ) then 
-            sts=NF90_INQ_VARID(ncid, 'prt_ratio', prt_ratioID)
-            sts=NF90_GET_VAR(ncid, prt_ratioID, prt_ratioarrI)
+            sts=NF90_INQ_VARID(nid, 'prt_ratio', prt_ratioID)
+            sts=NF90_GET_VAR(nid, prt_ratioID, prt_ratioarrI)
         endif
-        sts=NF90_INQ_VARID(ncid,'nyquist_velocity', nyquist_velocityID)
-        sts=NF90_GET_VAR(ncid, nyquist_velocityID, nyq_VelarrI)
-        sts=NF90_INQ_VARID(ncid,'n_samplesID', n_samplesID)
-        sts=NF90_GET_VAR(ncid, n_samplesID, n_samplesarrI)
-        sts=NF90_INQ_VARID(ncid, 'radar_antenna_gain_h',radar_antenna_gain_hID)
-        sts=NF90_GET_VAR(ncid, radar_antenna_gain_hID, AeI)
-        sts=NF90_INQ_VARID(ncid, 'radar_beam_width_h',radar_beam_width_hID)
-        sts=NF90_GET_VAR(ncid, radar_beam_width_hID, HorBeamWI)
+        sts=NF90_INQ_VARID(nid,'nyquist_velocity', nyquist_velocityID)
+        sts=NF90_GET_VAR(nid, nyquist_velocityID, nyq_VelarrI)
+        sts=NF90_INQ_VARID(nid,'n_samplesID', n_samplesID)
+        sts=NF90_GET_VAR(nid, n_samplesID, n_samplesarrI)
+        sts=NF90_INQ_VARID(nid, 'radar_antenna_gain_h',radar_antenna_gain_hID)
+        sts=NF90_GET_VAR(nid, radar_antenna_gain_hID, AeI)
+        sts=NF90_INQ_VARID(nid, 'radar_beam_width_h',radar_beam_width_hID)
+        sts=NF90_GET_VAR(nid, radar_beam_width_hID, HorBeamWI)
 
         !1.3. read Data     (Block)
         !basetime
@@ -122,23 +122,22 @@ do filei=1,Nfile
 
         tscl=1440/tlen
 !3. Convert variables from char to int or int to real etc.
-        !call tims2i(tcs,ye,mn,da,ho,mi,se)
-        !time=(mi-mod(mi,tscl))/tscl+1+ho*60/tscl
-        Iend=(file_end-file_start)+Istart
-        do ti=1,file_end-file_start
+        nbin=file_end-file_start+1
+        Iend=Iend+nbin
+
+        do ti=1,nbin
             do hi=1,binlen
-                RefhI(Istart+ti,hi)=RefhN(hi,file_start+ti)*Zsf+offset
-                RefvI(Istart+ti,hi)=RefvN(hi,file_start+ti)*Zsf+offset
-                VelhI(Istart+ti,hi)=VelhN(hi,file_start+ti)*Vsf+offset
-                VelvI(Istart+ti,hi)=VelvN(hi,file_start+ti)*Vsf+offset
-                SpWhI(Istart+ti,hi)=SpWhN(hi,file_start+ti)*Wsf+offset
-                SpWvI(Istart+ti,hi)=SpWvN(hi,file_start+ti)*Wsf+offset
-                SNRhI(Istart+ti,hi)=SNRhN(hi,file_start+ti)*Ssf+offset
-                SNRvI(Istart+ti,hi)=SNRvN(hi,file_start+ti)*Ssf+offset
-                LDRaI(Istart+ti,hi)=LDRaN(hi,file_start+ti)*Lsf+offset
+                RefhI(Iend+ti,hi)=RefhN(hi,file_start-1+ti)*Zsf+offset
+                RefvI(Iend+ti,hi)=RefvN(hi,file_start-1+ti)*Zsf+offset
+                VelhI(Iend+ti,hi)=VelhN(hi,file_start-1+ti)*Vsf+offset
+                VelvI(Iend+ti,hi)=VelvN(hi,file_start-1+ti)*Vsf+offset
+                SpWhI(Iend+ti,hi)=SpWhN(hi,file_start-1+ti)*Wsf+offset
+                SpWvI(Iend+ti,hi)=SpWvN(hi,file_start-1+ti)*Wsf+offset
+                SNRhI(Iend+ti,hi)=SNRhN(hi,file_start-1+ti)*Ssf+offset
+                SNRvI(Iend+ti,hi)=SNRvN(hi,file_start-1+ti)*Ssf+offset
+                LDRaI(Iend+ti,hi)=LDRaN(hi,file_start-1+ti)*Lsf+offset
             enddo
         enddo
-        Istart=Iend+1
         if (frqlen.eq.1) then
             PRFIN(1)=frequencyarrI(1)
         else

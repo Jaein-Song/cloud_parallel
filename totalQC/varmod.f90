@@ -14,7 +14,7 @@ IMPLICIT NONE
 !1.1. File I/O Vars
 CHARACTER(len=150)                  :: Ifname,outfn,cfname
 INTEGER                             :: Nfile,tlen,fflag,dti,dhi,file_start,file_end,ftlen_NC,fflag_in
-INTEGER                             :: qcstat,filei,Istart,Iend
+INTEGER                             :: qcstat,filei, nbin, Iend
 integer,Dimension(:)                :: qcflags(4)
 CHARACTER(len=20)                   :: filehead
 !2. Vars for subroutines

@@ -29,7 +29,7 @@ export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH	     			# Modify LD_LIBRARY_
 export extend=png					        		# extension of figure
 export FC=gfortran44					        		# Set Fortran Compiler (Need Fortran 2003)
 export options1='-fbounds-check -ffree-line-length-512'				# Set Fortran Compiler options (selectable)
-export options='-fbounds-check -ffree-line-length-512'						# Set Fortran Compiler options (selectable)
+export options='-fbounds-check -g -ffree-line-length-512'						# Set Fortran Compiler options (selectable)
 export FC_NC_lib='-I'$NETCDF'/include -L'$NETCDF'/lib -lnetcdf -lnetcdff'	# NetCDF library PATH for compiler option
 export num_cpu=12								# Number of CPUs to use 
 
