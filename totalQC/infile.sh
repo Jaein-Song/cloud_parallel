@@ -60,6 +60,8 @@ while [ $i -le $tlen ]; do
                         done
                         n=0
                         m=$k
+			echo k: $k i: $i timef: ${timef[$k]} timer: ${timer[$i]}
+			echo ${fl[$k]}
                         while [ ${timef[$k]} -lt ${timer[$i]} ]; do
                                 let n++
                                 let k++

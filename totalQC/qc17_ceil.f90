@@ -191,9 +191,9 @@ SUBROUTINE qc17_ceil
                 endif
 !4. Data process for xpol only if copol data exisist
 !4.1. frequency check for xpol
-                print*, 'out: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
-                IF ( (Qflagsv.ge.ratio_qc17*ftlen).and.(RefhO(hi).ge.Ref_low_thres*100) ) then
-                print*, 'in: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
+                !print*, 'out: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
+                IF ( (Qflagsv.ge.ratio_qc17*Qflags).and.(RefhO(hi).ge.Ref_low_thres*100) ) then
+                !print*, 'in: Qflagsv, ftlen, Refho(hi)',Qflagsv,ftlen,RefhO(hi)
 !4.2. Average Data for xpol
                 Refvs=0;
                 Velvs=0;
