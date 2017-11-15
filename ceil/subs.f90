@@ -26,8 +26,27 @@ do lengthi=1,length-1
 enddo
 END SUBROUTINE
 !===================================================================================================================================
+SUBROUTINE qcflagcheck(hex4,flagarr)
+IMPLICIT NONE   
+        character(len=4),intent(in   )          :: hex4
+        integer,dimension(:),intent(   out)        :: flagarr(16)
+        integer                                 :: i,j,bin_index
+        real                                    :: dec
+        do i=1,4
+                call htd(hex4(i:i),5,dec,0,0,0)
+                do j=1,4
+                bin_index=4-j
+                if (dec.ge.2**bin_index) then
+                        flagarr((i-1)*4+j)=1
+                        dec=dec-2**bin_index
+                else
+                        flagarr((i-1)*4+j)=0
+                endif
+                enddo
+        enddo
+ENDSUBROUTINE
+!===================================================================================================================================
 subroutine htd(hex,l,deco,ii,jj,stat)
-!use varmod
 implicit none
 
         character(len=1),intent(in)    :: hex
@@ -54,17 +73,17 @@ implicit none
                 dec=8       
         elseif(hex.eq.'9')then
                 dec=9       
-        elseif(hex.eq.'a')then
+        elseif((hex.eq.'a').or.(hex.eq.'A'))then
                 dec=10      
-        elseif(hex.eq.'b')then
+        elseif((hex.eq.'b').or.(hex.eq.'B'))then
                 dec=11      
-        elseif(hex.eq.'c')then
+        elseif((hex.eq.'c').or.(hex.eq.'C'))then
                 dec=12      
-        elseif(hex.eq.'d')then
+        elseif((hex.eq.'d').or.(hex.eq.'D'))then
                 dec=13      
-        elseif(hex.eq.'e')then
+        elseif((hex.eq.'e').or.(hex.eq.'E'))then
                 dec=14      
-        elseif(hex.eq.'f')then
+        elseif((hex.eq.'f').or.(hex.eq.'F'))then
                 dec=15      
         else
                 print*,'Invalid HEX digit?',hex,ii,jj
@@ -75,23 +94,21 @@ implicit none
         deco=deco+dec
 endsubroutine
 !===================================================================================================================================
-SUBROUTINE meantime(thresh_low,thresh_high,var,varlen1,varlen2,vartime,timelen,var_avged,count_valid,count_total,fv)
+SUBROUTINE meantime(thresh_low,thresh_high,var,varlen1,varlen2,vartime,timelen,var_avged,count_valid,count_total,fvalue,bflag)
 !!!!!!!var dimension must be set as (time,height)
+use varmod
 IMPLICIT NONE
 !INTENT VARIABLES
-        integer,                                intent(in   ) :: thresh_high,thresh_low,varlen1,varlen2,timelen
+        integer,                                intent(in   ) :: thresh_high,thresh_low,varlen1,varlen2,timelen,bflag
         integer,dimension(:),                   intent(in   ) :: vartime(varlen1)
         real,   dimension(:,:),                 intent(in   ) :: var(varlen1,varlen2)
- !       integer,dimension(:),   allocatable,    intent(  out) :: time_avged
         integer,dimension(:),                   intent(  out) :: count_total(timelen)
         integer,dimension(:,:),                 intent(  out) :: count_valid(timelen,varlen2)
         real,   dimension(:,:),                 intent(  out) :: var_avged(timelen,varlen2)
 !INHERENT VARIABLES
-        integer                                               :: i,j,ti,time_start,time_end,pos_marker,pos_flag,time_intv
-        real                                                  :: fv
+        integer                                               :: ti,time_start,time_end,pos_marker,pos_flag,time_intv
+        real                                                  :: fvalue
         time_intv=86400/timelen
-!        timelen=86400/time_intv
-!        allocate(var_avged(timelen,varlen2),count_total(timelen),count_valid(timelen,varlen2))
 !Count cells for each timestep
         ti=1
 
@@ -112,36 +129,54 @@ IMPLICIT NONE
                         endif
                 end do
         end do
-!        print*,'loopend'
 !AVG for each timestep
         pos_marker=1
         do ti=1,timelen
-!                print*,pos_marker
+                if (bflag.eq.1) then
+                        QCflags(ti)=0
+                        aflags(ti)=0
+                        wflags(ti)=0
+                        sflags(ti)=0
+                        do k=1,16
+                                aflaga(ti,k)=0
+                                wflaga(ti,k)=0
+                                sflaga(ti,k)=0
+                        enddo
+                endif
                 do j=1,varlen2
-!                print*,ti,j,count_total(ti)
                         count_valid(ti,j)       = 0
                         var_avged(ti,j)         = 0
                         do i=pos_marker,pos_marker+count_total(ti)-1
-!                        print*,'before if1'
-!                        print*,i,j
-                                if ( (var(i,j).gt.thresh_low).and.(var(i,j).le.thresh_high) ) then
-                                        count_valid(ti,j)       = count_valid(ti,j)+1
-                                        var_avged(ti,j)         = var_avged(ti,j)+var(i,j)
-                                end if
+                                if (bflag.eq.1) then
+                                do k=1,16
+                                        aflags(ti)=alarm_flag(i,k)+aflags(ti)
+                                        wflags(ti)=warning_flag(i,k)+wflags(ti)
+                                        sflags(ti)=status_flag(i,k)+sflags(ti)
+                                        aflaga(ti,k)=aflaga(ti,k)+alarm_flag(i,k)
+                                        wflaga(ti,k)=wflaga(ti,k)+warning_flag(i,k)
+                                        sflaga(ti,k)=sflaga(ti,k)+status_flag(i,k)
+                                enddo
+                                     if (QCflag(i).lt.1)then
+                                            if ( (var(i,j).gt.thresh_low).and.(var(i,j).le.thresh_high) ) then
+                                                count_valid(ti,j)       = count_valid(ti,j)+1
+                                                var_avged(ti,j)         = var_avged(ti,j)+var(i,j)
+                                            end if
+                                     else
+                                            QCflags(ti)=QCflags(ti)+1
+                                     endif
+                                else
+                                        if ( (var(i,j).gt.thresh_low).and.(var(i,j).le.thresh_high) ) then
+                                                count_valid(ti,j)       = count_valid(ti,j)+1
+                                                var_avged(ti,j)         = var_avged(ti,j)+var(i,j)
+                                       endif
+                                endif
                         end do
-!                print*,'before if2'
                         if ( count_valid(ti,j).ge.1 ) then
                             var_avged(ti,j)=var_avged(ti,j)/count_valid(ti,j)
                         else
-                            var_avged(ti,j)=fv
+                            var_avged(ti,j)=fvalue
                         endif
-!                print*,ti,'end'
                 end do
-                !print*,ti,pos_marker,ti,count_total(ti)
-                !print*,var(pos_marker:count_total(ti)+pos_marker,1)
-                !print*,var_avged
                 pos_marker=pos_marker+count_total(ti)
         end do
-        !print*,'var', var
-        !print*,'va',var_avged
 END SUBROUTINE

@@ -6,6 +6,8 @@
 ## compile first
 #Set file path or switch in this file
 rm -rf *.mod
+rm -rf */*.mod
+rm -rf */*.o
 rm -rf *.o
 source ./list                   # Call the configuration file.
 cd $current_dir
@@ -27,8 +29,10 @@ while [ $ppn -lt $num_cpu ]; do
     #ceil
     if [ $flag_ceil -gt 0 ]; then
 	export ceilfl=(`ls -d $ceil_dir/2*/*`)
-	insource="$current_dir/ceil/varmod.f90 $current_dir/ceil/ceil.f90 $current_dir/ceil/Sorting.f90 $current_dir/ceil/ncwrite.f90 $current_dir/ceil/subs.f90"
+	echo `ls $current_dir/ceil/sorting.f90`
+	insource="$current_dir/ceil/varmod.f90 $current_dir/ceil/ceil.f90 $current_dir/ceil/sorting.f90 $current_dir/ceil/ncwrite.f90 $current_dir/ceil/subs.f90"
 	outbinary='-o '$current_dir'/ceil/ceilrun'$ppn
+	echo $ppn ppn
 	$FC $options1 $insource $FC_NC_lib $outbinary
     fi
     #covupCF
@@ -56,7 +60,7 @@ fi
 ##START CEIL PROCESS
 if [ $flag_ceil -gt 0 ]; then
 echo '[PROCESS] CEIL'
-	export ceil_dl=(`ls -d $ceil_dir/$ex_yr/*$ex_mn/`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
+	export ceil_dl=(`ls -d $ceil_dir/$ex_yr*$ex_mn`) #SHOULD BE MODIFIED FOR DIFRENT TYPE OF PATH
 	echo ${ceil_dl[*]}>$current_dir/ceil_dl
 	ppn=0                       #Process Parallel computing Number
 	while [ $ppn -lt $num_cpu ]; do

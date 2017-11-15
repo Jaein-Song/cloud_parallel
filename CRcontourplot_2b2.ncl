@@ -44,13 +44,16 @@ l!1="Time"
 l&Time=t/3600
 l&Height=h
 tlen=dimsizes(t)
+hlen=dimsizes(h)
 dnd=new(dimsizes(z),float)
 dnd@_FillValue=-99
 dndcount=0
 do i=0,tlen-1
-	if(n(i).lt.0) then
-		dnd(:,i)=1.+i/100.
-	dndcount=dndcount+1
+	if(n(i).le.0) then
+	do j=1,hlen-1
+		dnd(h,i)=1.+i/100.+h/100.
+	end do
+		dndcount=dndcount+1
 	else
 		dnd(:,i)=-99
 	end if

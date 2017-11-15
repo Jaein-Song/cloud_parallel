@@ -1,0 +1,721 @@
+0 1
+===============ifn,ofn,ifname1,ifnae2,dd================
+1
+1
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010100.DAT
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_01.his
+01 2
+=====================testprint end======================
+ /home/jaein/cloud_nims/ceil/ifl00
+ lv3flag           1
+ tint
+ idir/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010100.DAT                                                                                                                                                                                          
+ idir2/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_01.his                                                                                                                                                                   
+ odir/home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_001_20160101.cdf                                                                                                                                                                                     
+ odir2/home/jaein/cloud_nims/2016/NCIO_CIL_avg2_LV3__daily_001_20160101.cdf                                                                                                                                                                                     
+ eof-File                                                                                                                                                                                                                                                     
+ -Ceilometer                                                                                                                                                                                                                                               
+ -File                                                                                                                                                                                                                                                     
+ bsc
+ cbh1
+ cbh2
+ cbh3
+ blh1
+ blh2
+ blh3
+ bli1
+ bli2
+ bli3
+ bend
+ /home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_001_20160101.cdf                                                                                                                                                                                     
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3 in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: 01defining  NetCDF F90 library message: No error                                                                        success
+ stage: 02defining  NetCDF F90 library message: No error                                                                        success
+ stage: 03defining  NetCDF F90 library message: No error                                                                        success
+ stage: 04defining  NetCDF F90 library message: No error                                                                        success
+ stage: 05defining  NetCDF F90 library message: No error                                                                        success
+ stage: 06defining  NetCDF F90 library message: No error                                                                        success
+ stage: 07defining  NetCDF F90 library message: No error                                                                        success
+ stage: 08defining  NetCDF F90 library message: No error                                                                        success
+ stage: 09defining  NetCDF F90 library message: No error                                                                        success
+ stage: 10defining  NetCDF F90 library message: No error                                                                        success
+ stage: 11defining  NetCDF F90 library message: No error                                                                        success
+ stage: 12defining  NetCDF F90 library message: No error                                                                        success
+ stage: 13defining  NetCDF F90 library message: No error                                                                        success
+ stage: 14defining  NetCDF F90 library message: No error                                                                        success
+ stage: 15defining  NetCDF F90 library message: No error                                                                        success
+ stage: 16defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bict3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli1s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli2s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli3s in  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: bsct in  NetCDF F90 library message: No error                                                                        success
+ stage: bscv in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+===============ifn,ofn,ifname1,ifnae2,dd================
+1
+1
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010200.DAT
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_02.his
+02 2
+=====================testprint end======================
+ /home/jaein/cloud_nims/ceil/ifl00
+ lv3flag           1
+ tint
+ idir/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010200.DAT                                                                                                                                                                                          
+ idir2/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_02.his                                                                                                                                                                   
+ odir/home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_002_20160102.cdf                                                                                                                                                                                     
+ odir2/home/jaein/cloud_nims/2016/NCIO_CIL_avg2_LV3__daily_002_20160102.cdf                                                                                                                                                                                     
+ eof-File                                                                                                                                                                                                                                                     
+ -Ceilometer                                                                                                                                                                                                                                               
+ -File                                                                                                                                                                                                                                                     
+ bsc
+ cbh1
+ cbh2
+ cbh3
+ blh1
+ blh2
+ blh3
+ bli1
+ bli2
+ bli3
+ bend
+ /home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_002_20160102.cdf                                                                                                                                                                                     
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3 in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: 01defining  NetCDF F90 library message: No error                                                                        success
+ stage: 02defining  NetCDF F90 library message: No error                                                                        success
+ stage: 03defining  NetCDF F90 library message: No error                                                                        success
+ stage: 04defining  NetCDF F90 library message: No error                                                                        success
+ stage: 05defining  NetCDF F90 library message: No error                                                                        success
+ stage: 06defining  NetCDF F90 library message: No error                                                                        success
+ stage: 07defining  NetCDF F90 library message: No error                                                                        success
+ stage: 08defining  NetCDF F90 library message: No error                                                                        success
+ stage: 09defining  NetCDF F90 library message: No error                                                                        success
+ stage: 10defining  NetCDF F90 library message: No error                                                                        success
+ stage: 11defining  NetCDF F90 library message: No error                                                                        success
+ stage: 12defining  NetCDF F90 library message: No error                                                                        success
+ stage: 13defining  NetCDF F90 library message: No error                                                                        success
+ stage: 14defining  NetCDF F90 library message: No error                                                                        success
+ stage: 15defining  NetCDF F90 library message: No error                                                                        success
+ stage: 16defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bict3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli1s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli2s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli3s in  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: bsct in  NetCDF F90 library message: No error                                                                        success
+ stage: bscv in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+===============ifn,ofn,ifname1,ifnae2,dd================
+1
+1
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010300.DAT
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_03.his
+03 2
+=====================testprint end======================
+ /home/jaein/cloud_nims/ceil/ifl00
+ lv3flag           1
+ tint
+ idir/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010300.DAT                                                                                                                                                                                          
+ idir2/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_03.his                                                                                                                                                                   
+ odir/home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_003_20160103.cdf                                                                                                                                                                                     
+ odir2/home/jaein/cloud_nims/2016/NCIO_CIL_avg2_LV3__daily_003_20160103.cdf                                                                                                                                                                                     
+ eof-File                                                                                                                                                                                                                                                     
+ -Ceilometer                                                                                                                                                                                                                                               
+ -File                                                                                                                                                                                                                                                     
+ bsc
+ cbh1
+ cbh2
+ cbh3
+ blh1
+ blh2
+ blh3
+ bli1
+ bli2
+ bli3
+ bend
+ /home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_003_20160103.cdf                                                                                                                                                                                     
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3 in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: 01defining  NetCDF F90 library message: No error                                                                        success
+ stage: 02defining  NetCDF F90 library message: No error                                                                        success
+ stage: 03defining  NetCDF F90 library message: No error                                                                        success
+ stage: 04defining  NetCDF F90 library message: No error                                                                        success
+ stage: 05defining  NetCDF F90 library message: No error                                                                        success
+ stage: 06defining  NetCDF F90 library message: No error                                                                        success
+ stage: 07defining  NetCDF F90 library message: No error                                                                        success
+ stage: 08defining  NetCDF F90 library message: No error                                                                        success
+ stage: 09defining  NetCDF F90 library message: No error                                                                        success
+ stage: 10defining  NetCDF F90 library message: No error                                                                        success
+ stage: 11defining  NetCDF F90 library message: No error                                                                        success
+ stage: 12defining  NetCDF F90 library message: No error                                                                        success
+ stage: 13defining  NetCDF F90 library message: No error                                                                        success
+ stage: 14defining  NetCDF F90 library message: No error                                                                        success
+ stage: 15defining  NetCDF F90 library message: No error                                                                        success
+ stage: 16defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bict3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli1s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli2s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli3s in  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: bsct in  NetCDF F90 library message: No error                                                                        success
+ stage: bscv in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+===============ifn,ofn,ifname1,ifnae2,dd================
+1
+1
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010400.DAT
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_04.his
+04 2
+=====================testprint end======================
+ /home/jaein/cloud_nims/ceil/ifl00
+ lv3flag           1
+ tint
+ idir/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010400.DAT                                                                                                                                                                                          
+ idir2/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_04.his                                                                                                                                                                   
+ odir/home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_004_20160104.cdf                                                                                                                                                                                     
+ odir2/home/jaein/cloud_nims/2016/NCIO_CIL_avg2_LV3__daily_004_20160104.cdf                                                                                                                                                                                     
+ eof-File                                                                                                                                                                                                                                                     
+ -Ceilometer                                                                                                                                                                                                                                               
+ -File                                                                                                                                                                                                                                                     
+ bsc
+ cbh1
+ cbh2
+ cbh3
+ blh1
+ blh2
+ blh3
+ bli1
+ bli2
+ bli3
+ bend
+ /home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_004_20160104.cdf                                                                                                                                                                                     
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3 in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: 01defining  NetCDF F90 library message: No error                                                                        success
+ stage: 02defining  NetCDF F90 library message: No error                                                                        success
+ stage: 03defining  NetCDF F90 library message: No error                                                                        success
+ stage: 04defining  NetCDF F90 library message: No error                                                                        success
+ stage: 05defining  NetCDF F90 library message: No error                                                                        success
+ stage: 06defining  NetCDF F90 library message: No error                                                                        success
+ stage: 07defining  NetCDF F90 library message: No error                                                                        success
+ stage: 08defining  NetCDF F90 library message: No error                                                                        success
+ stage: 09defining  NetCDF F90 library message: No error                                                                        success
+ stage: 10defining  NetCDF F90 library message: No error                                                                        success
+ stage: 11defining  NetCDF F90 library message: No error                                                                        success
+ stage: 12defining  NetCDF F90 library message: No error                                                                        success
+ stage: 13defining  NetCDF F90 library message: No error                                                                        success
+ stage: 14defining  NetCDF F90 library message: No error                                                                        success
+ stage: 15defining  NetCDF F90 library message: No error                                                                        success
+ stage: 16defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bict3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli1s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli2s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli3s in  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: bsct in  NetCDF F90 library message: No error                                                                        success
+ stage: bscv in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+===============ifn,ofn,ifname1,ifnae2,dd================
+1
+1
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010500.DAT
+/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_05.his
+05 2
+=====================testprint end======================
+ /home/jaein/cloud_nims/ceil/ifl00
+ lv3flag           1
+ tint
+ idir/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/A6010500.DAT                                                                                                                                                                                          
+ idir2/home/jaein/wavebkup/data/Jaein/boseong/ceil/201601/CEILOMETER_1_LEVEL_3_DEFAULT_05.his                                                                                                                                                                   
+ odir/home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_005_20160105.cdf                                                                                                                                                                                     
+ odir2/home/jaein/cloud_nims/2016/NCIO_CIL_avg2_LV3__daily_005_20160105.cdf                                                                                                                                                                                     
+ eof-File                                                                                                                                                                                                                                                     
+ -Ceilometer                                                                                                                                                                                                                                               
+ -File                                                                                                                                                                                                                                                     
+ bsc
+ cbh1
+ cbh2
+ cbh3
+ blh1
+ blh2
+ blh3
+ bli1
+ bli2
+ bli3
+ bend
+ /home/jaein/cloud_nims/2016/NCIO_CIL_noQC_RAW__daily_005_20160105.cdf                                                                                                                                                                                     
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2 in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3 in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success
+ stage: writing file  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: dimensioning  NetCDF F90 library message: No error                                                                        success
+ stage: 01defining  NetCDF F90 library message: No error                                                                        success
+ stage: 02defining  NetCDF F90 library message: No error                                                                        success
+ stage: 03defining  NetCDF F90 library message: No error                                                                        success
+ stage: 04defining  NetCDF F90 library message: No error                                                                        success
+ stage: 05defining  NetCDF F90 library message: No error                                                                        success
+ stage: 06defining  NetCDF F90 library message: No error                                                                        success
+ stage: 07defining  NetCDF F90 library message: No error                                                                        success
+ stage: 08defining  NetCDF F90 library message: No error                                                                        success
+ stage: 09defining  NetCDF F90 library message: No error                                                                        success
+ stage: 10defining  NetCDF F90 library message: No error                                                                        success
+ stage: 11defining  NetCDF F90 library message: No error                                                                        success
+ stage: 12defining  NetCDF F90 library message: No error                                                                        success
+ stage: 13defining  NetCDF F90 library message: No error                                                                        success
+ stage: 14defining  NetCDF F90 library message: No error                                                                        success
+ stage: 15defining  NetCDF F90 library message: No error                                                                        success
+ stage: 16defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: defining  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: unit  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: Fillvalue  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhcv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bhct3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv11s in  NetCDF F90 library message: No error                                                                        success
+ stage: bicv12s in  NetCDF F90 library message: No error                                                                        success
+ stage: bict3s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: cbh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh1s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh2s in  NetCDF F90 library message: No error                                                                        success
+ stage: blh3s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli1s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli2s in  NetCDF F90 library message: No error                                                                        success
+ stage: bli3s in  NetCDF F90 library message: No error                                                                        success
+ stage: t in  NetCDF F90 library message: No error                                                                        success
+ stage: h in  NetCDF F90 library message: No error                                                                        success
+ stage: bsc in  NetCDF F90 library message: No error                                                                        success
+ stage: bsct in  NetCDF F90 library message: No error                                                                        success
+ stage: bscv in  NetCDF F90 library message: No error                                                                        success
+ stage: end  NetCDF F90 library message: No error                                                                        success

@@ -4,34 +4,35 @@
 ## THIS FILE MUST BE MODIFIED BEFORE USE THE ENTIRE PROGRAM IN ANY OTHER ENVIRONMENT.
 
 ## SET BASIC PATHS
-export current_dir=/home/frldata/Cloud_Proc/dev		    			# Fix the current directory
+export current_dir=/home/jaein/cloud_nims		    			# Fix the current directory
 export CLD_dir=/data1/CLD_258/hmbprodat            	    			# Path of input binary files
 export CF_dir=/data2/CLD_PP/CLD_258/hmbprodat/CFRADIAL  			# Path of output CFradial files
-export ceil_dir=/data2/CLD_PP/CL51_258                  			# Path of Ceilometer files
-export ceil_cdf_dir=/data2/CLD_PP/CL51_258/netCDF       			# Path of output netCDF Ceilometer files
+export ceil_dir=/home/jaein/wavebkup/data/Jaein/boseong/ceil              			# Path of Ceilometer files
+export ceil_cdf_dir=/home/jaein/cloud_nims       			# Path of output netCDF Ceilometer files
 export y_u_date=`date -u -d yesterday +%Y%m%d`          			# Get the UTC date of yesterday
 export t_u_date=`date -u -d now +%Y%m%d`                			# Get the UTC date of today
-export NETCDF='/usr/local/netcdf4.4'			        		# Path of netCDF4 : its library path must have both "libnetcdf and libnetcdff" 
+export NETCDF=/usr/local/netcdf/444_gcc481			        		# Path of netCDF4 : its library path must have both "libnetcdf and libnetcdff" 
 export Fig_dir=/data2/CLD_258/hmbprodat/CFRADIAL/Figs  				# Path of output Figure png files
+export Fig_dir_CL=/home/jaein/cloud_nims  				# Path of output Figure png files
 export web_dir=$Fig_dir/CLD1                            			# Path of webpage image directory
-export NCARG_ROOT=/home/frldata/util/ncl
+export NCARG_ROOT=/usr/local/ncl_ncarg/621/gcc447
 export PATH=$PATH:$NCARG_ROOT
 export ncl=$NCARG_ROOT/bin/ncl
 
 ##SET file date option
 # use wildcard(*) if you want to excute for all date
-export ex_yr='2015'
+export ex_yr='2016'
 export ex_mn='01'
-export ex_da='05'
+export ex_da='01'
 
 ##COMPILE AND EXECUTE SETTING
 export LD_LIBRARY_PATH=$NETCDF/lib:$LD_LIBRARY_PATH	     			# Modify LD_LIBRARY_PATH to use netcdf library in gfortran
 export extend=png					        		# extension of figure
-export FC=gfortran44					        		# Set Fortran Compiler (Need Fortran 2003)
+export FC=gfortran					        		# Set Fortran Compiler (Need Fortran 2003)
 export options1='-fbounds-check -ffree-line-length-512'				# Set Fortran Compiler options (selectable)
-export options='-fbounds-check -g -ffree-line-length-512'						# Set Fortran Compiler options (selectable)
+#export options='-fbounds-check -g -ffree-line-length-512'						# Set Fortran Compiler options (selectable)
 export FC_NC_lib='-I'$NETCDF'/include -L'$NETCDF'/lib -lnetcdf -lnetcdff'	# NetCDF library PATH for compiler option
-export num_cpu=12								# Number of CPUs to use 
+export num_cpu=1								# Number of CPUs to use 
 
 ##FILE SETTING
 export CLD_flen=45								# Time coverage of file in seond (Cloud Radar)
@@ -42,9 +43,9 @@ export CLD_tres=90								# Temporal resolution of measurement in ms (Cloud Rada
 ##SWITCH 
 #Flag for turn on/off each progress. set if you want to do: 1, not:0
 export flag_refn=0								# Refine file directories
-export flag_ceil=0								# Convert ceilometer data files from ASCII to netCDF
+export flag_ceil=1								# Convert ceilometer data files from ASCII to netCDF
 export flag_b2n=0								# Convert cloud radar data files from Binary to netCDF
-export flag_day=1								# Merge daily cloud radar data 
+export flag_day=0								# Merge daily cloud radar data 
 export flag_plot=0								# Plot daily cloud radar data
 export flag_web=0								# Copy or modify path for web display
 
@@ -58,17 +59,17 @@ export flag_qc172o=1								# QC17 algorithm with ceilometer
 export flag_overwrite=1								# Overwrite flag overwrite if this flag is 1
 export time_intv=120								# time resolution of daily CLD in second 
 
-##Find the oldest file date
-filelist=(`ls -d $CLD_dir/BASEDATD/20****/`)					
-oldestfile=${filelist[0]##/*/}
-export sy=${oldestfile:0:4} 
-export sm=${oldestfile:4:2}
-
-
-
-
 export dupl=2
 if [ $flag_overwrite -lt 1 ]; then
 	export dupl=1
 fi
+
+##Find the oldest file date
+#filelist=(`ls -d $CLD_dir/BASEDATD/20****/`)					
+#oldestfile=${filelist[0]##/*/}
+#export sy=${oldestfile:0:4} 
+#export sm=${oldestfile:4:2}
+
+
+
 
